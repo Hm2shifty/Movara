@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movara — Advanced Bathtub Transfer Bench Innovation</title>
+  <meta name="description" content="An advanced bathtub transfer bench providing lateral, longitudinal, elevation, and rotational movement to support senior mobility and independence." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ── Page 1 Specific Styles ── */
+    .movement-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .movement-card {
+      background: var(--white);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .movement-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--midnight);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .movement-card:hover::before { transform: scaleX(1); }
+    .movement-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .movement-icon {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      display: block;
+      line-height: 1;
+    }
+    .movement-card h3 { font-size: 1.3rem; margin-bottom: 12px; }
+
+    .cad-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .cad-item { position: relative; border-radius: var(--radius-md); overflow: hidden; }
+    .cad-item img { width: 100%; height: 220px; object-fit: cover; display: block; }
+    .cad-item .img-placeholder { height: 220px; }
+    .cad-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(13,16,80,0.85));
+      color: rgba(255,255,255,0.9);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 20px 14px 12px;
+    }
+
+    .problem-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .problem-visual {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+      padding: 48px 36px;
+      text-align: center;
+    }
+    .problem-visual .big-num {
+      font-family: var(--font-serif);
+      font-size: 4rem;
+      font-weight: 900;
+      color: var(--midnight-deep);
+      display: block;
+      line-height: 1;
+    }
+    .problem-visual .big-label {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 500;
+      margin-top: 8px;
+      margin-bottom: 32px;
+    }
+
+    .why-section {
+      background: var(--midnight-deep);
+      color: rgba(255,255,255,0.85);
+      padding: var(--section-pad) 0;
+    }
+    .why-section h2 { color: #fff; }
+    .why-section p  { color: rgba(255,255,255,0.65); }
+    .why-section .section-label { color: rgba(255,255,255,0.4); }
+    .why-section .section-label::before { background: rgba(255,255,255,0.4); }
+    .why-section .btn-outline { color: #fff; border-color: rgba(255,255,255,0.3); }
+    .why-section .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); }
+
+    @media (max-width: 768px) {
+      .movement-grid, .cad-gallery, .problem-layout { grid-template-columns: 1fr; }
+      .cad-gallery { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) { .cad-gallery { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav id="nav" role="navigation" aria-label="Main navigation"></nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-grid-pattern"></div>
+    <div class="container hero-content">
+      <div class="hero-eyebrow" id="hero-eyebrow">Senior Mobility Engineering Project</div>
+      <h1 id="hero-headline">Loading…</h1>
+      <p class="lead hero-lead" id="hero-subheadline"></p>
+      <div class="hero-cta" id="hero-cta"></div>
+      <div class="hero-stats" id="hero-stats"></div>
+    </div>
+  </section>
+
+  <!-- THE PROBLEM -->
+  <section id="problem">
+    <div class="container">
+      <div class="problem-layout">
+        <div data-reveal>
+          <span class="section-label" id="problem-label"></span>
+          <h2 id="problem-heading"></h2>
+          <div class="divider left" style="margin-bottom:28px"></div>
+          <p id="problem-body" class="lead" style="margin-bottom:28px;"></p>
+          <ul class="feature-list" id="problem-points"></ul>
+        </div>
+        <div class="problem-visual" data-reveal data-reveal-delay="2">
+          <span class="big-num" data-counter="80" data-suffix="%">0%</span>
+          <p class="big-label">of serious bathroom injuries occur during bathing or showering</p>
+          <span class="big-num" data-counter="1" data-suffix=" in 3" style="font-size:3rem">0</span>
+          <p class="big-label">seniors experience a fall each year</p>
+          <span class="big-num" data-counter="4">0</span>
+          <p class="big-label">movement planes integrated in Movara</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE INNOVATION — 4 Movements -->
+  <section id="innovation" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-label" id="movements-label"></span>
+        <h2 id="movements-heading"></h2>
+        <div class="divider"></div>
+        <p id="movements-intro"></p>
+      </div>
+      <div class="movement-grid" id="movements-grid"></div>
+    </div>
+  </section>
+
+  <!-- CAD Gallery -->
+  <section id="cad">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-label" id="cad-label"></span>
+        <h2 id="cad-heading"></h2>
+        <div class="divider"></div>
+        <p id="cad-body"></p>
+      </div>
+      <div class="cad-gallery" id="cad-gallery"></div>
+    </div>
+  </section>
+
+  <!-- WHY IT MATTERS -->
+  <section class="why-section" id="why">
+    <div class="container">
+      <div style="max-width:720px; margin:0 auto; text-align:center;" data-reveal>
+        <span class="section-label" id="why-label"></span>
+        <h2 id="why-heading" style="margin-bottom:20px;"></h2>
+        <p id="why-body" style="margin-bottom:36px;"></p>
+        <div id="why-cta"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer"></footer>
+
+  <script src="js/nav.js"></script>
+  <script src="js/loader.js"></script>
+  <script>
+    buildNav('index.html');
+    buildFooter();
+
+    fetch('data/page1.json')
+      .then(r => r.json())
+      .then(d => {
+        document.title = d.meta.title;
+        document.querySelector('meta[name="description"]').content = d.meta.description;
+
+        // Hero
+        document.getElementById('hero-eyebrow').textContent = d.hero.eyebrow;
+        document.getElementById('hero-headline').innerHTML =
+          d.hero.headline.replace(/([A-Z][a-z]+ [A-Z][a-z]+)/, '<em>$1</em>');
+        document.getElementById('hero-subheadline').textContent = d.hero.subheadline;
+        document.getElementById('hero-cta').innerHTML = `
+          <a class="btn btn-primary" href="${d.hero.cta_primary.href}">${d.hero.cta_primary.label} →</a>
+          <a class="btn btn-outline" href="${d.hero.cta_secondary.href}">${d.hero.cta_secondary.label}</a>
+        `;
+        document.getElementById('hero-stats').innerHTML = d.stats.map(s => `
+          <div>
+            <span class="hero-stat-num" data-counter="${s.value}" data-suffix="${s.suffix}">0</span>
+            <span class="hero-stat-label">${s.label}</span>
+          </div>
+        `).join('');
+
+        // Problem
+        document.getElementById('problem-label').textContent = d.problem.section_label;
+        document.getElementById('problem-heading').textContent = d.problem.heading;
+        document.getElementById('problem-body').textContent = d.problem.body;
+        document.getElementById('problem-points').innerHTML = d.problem.points.map(p => `<li>${p}</li>`).join('');
+
+        // Movements
+        document.getElementById('movements-label').textContent = d.movements.section_label;
+        document.getElementById('movements-heading').textContent = d.movements.heading;
+        document.getElementById('movements-intro').textContent = d.movements.intro;
+        document.getElementById('movements-grid').innerHTML = d.movements.cards.map((c, i) => `
+          <div class="movement-card" data-reveal data-reveal-delay="${i + 1}">
+            <span class="movement-icon">${c.icon}</span>
+            <h3>${c.title}</h3>
+            <p>${c.description}</p>
+          </div>
+        `).join('');
+
+        // CAD Gallery
+        document.getElementById('cad-label').textContent = d.cad_gallery.section_label;
+        document.getElementById('cad-heading').textContent = d.cad_gallery.heading;
+        document.getElementById('cad-body').textContent = d.cad_gallery.body;
+        document.getElementById('cad-gallery').innerHTML = d.cad_gallery.images.map(img => {
+          const tryImg = `
+            <div class="cad-item" data-reveal>
+              <img src="${img.src}" alt="${img.caption}"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+                   style="height:220px;object-fit:cover;width:100%;" />
+              <div class="img-placeholder" style="height:220px;display:none;">
+                <span class="ph-icon">📐</span>
+                <span>${img.placeholder}</span>
+                <span style="font-size:0.72rem;opacity:0.6;">assets/cad/ folder</span>
+              </div>
+              <div class="cad-caption">${img.caption}</div>
+            </div>`;
+          return tryImg;
+        }).join('');
+
+        // Why
+        document.getElementById('why-label').textContent = d.why_it_matters.section_label;
+        document.getElementById('why-heading').textContent = d.why_it_matters.heading;
+        document.getElementById('why-body').textContent = d.why_it_matters.body;
+        document.getElementById('why-cta').innerHTML = `
+          <a class="btn btn-outline" href="${d.why_it_matters.cta.href}">${d.why_it_matters.cta.label} →</a>`;
+
+        // Re-init animations after DOM update
+        initReveal();
+        initCounters();
+      })
+      .catch(err => console.error('Failed to load page1.json:', err));
+  </script>
+</body>
+</html>

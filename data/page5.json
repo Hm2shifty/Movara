@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "title": "Reflection — Movara Portfolio",
+    "description": "Project reflection, key learnings, areas for improvement, and professional testimonials on the Movara transfer bench."
+  },
+  "banner": {
+    "section_label": "Page 05 — Reflection",
+    "heading": "What I Built, What I Learned, What I'd Do Differently",
+    "lead": "An honest engineering reflection on a months-long project that challenged me technically, clinically, and creatively."
+  },
+  "reflection": {
+    "section_label": "Project Reflection",
+    "heading": "Looking Back on the Movara Journey",
+    "went_well": {
+      "label": "✓  What Went Well",
+      "items": [
+        "Replace this with something that went well — be specific. E.g., 'The iterative CAD process allowed rapid testing of different mechanism geometries without committing to physical fabrication.'",
+        "Replace with another success. E.g., 'Professional interview feedback directly improved the safety requirements, particularly around locking mechanisms in wet environments.'",
+        "Replace with another success. E.g., 'The morph chart methodology provided a structured framework for a decision space that otherwise felt overwhelming.'",
+        "Add another thing that went well in your project.",
+        "Add another success or effective process."
+      ]
+    },
+    "improve": {
+      "label": "△  What I Would Improve",
+      "items": [
+        "Replace with an honest improvement area. E.g., 'I would have engaged a potential end-user (a senior) in the design process earlier — the clinical interviews were valuable but lacked the direct user perspective.'",
+        "Replace with another improvement. E.g., 'The FMEA was completed after the design was substantially complete; in a future project I would integrate it earlier as a design driver, not a validation step.'",
+        "Replace with another improvement. E.g., 'I underestimated the time required for detailed CAD assembly work — better upfront planning of component interfaces would have reduced rework.'",
+        "Add another honest reflection on what you would do differently.",
+        "Add a final improvement area."
+      ]
+    }
+  },
+  "learnings": {
+    "section_label": "Key Learnings",
+    "heading": "What This Project Taught Me About Engineering",
+    "items": [
+      {
+        "icon": "🔩",
+        "title": "Mechanism Design is Iterative",
+        "body": "Replace with your learning about the design iteration process. How did your understanding of mechanism geometry evolve over the project? What surprised you?"
+      },
+      {
+        "icon": "🏥",
+        "title": "Clinical Context Shapes Engineering Decisions",
+        "body": "Replace with what you learned from the professional interviews. How did healthcare knowledge change what you thought was important in the design?"
+      },
+      {
+        "icon": "📊",
+        "title": "Formal Analysis Provides Confidence",
+        "body": "Replace with your reflection on tools like FMEA and FBD. Did they reveal failure modes or risks you hadn't considered? How did they improve your design?"
+      },
+      {
+        "icon": "🧩",
+        "title": "Systems Thinking in Product Design",
+        "body": "Replace with your learning about how individual design decisions interact. How did a change in one subsystem affect others? What did that teach you about engineering a whole product?"
+      }
+    ]
+  },
+  "testimonials": {
+    "section_label": "Professional Testimonials",
+    "heading": "What the Experts Said About the Final Design",
+    "intro": "Upon reviewing the completed Movara design, the professionals consulted during the interview phase were asked to provide their assessment of the innovation.",
+    "quotes": [
+      {
+        "quote": "Replace with the actual quote this professional gave about the final design or the project overall. Keep it authentic to what they said.",
+        "name": "Interviewee Name",
+        "role": "Mechanical Engineer",
+        "organization": "Organization Name"
+      },
+      {
+        "quote": "Replace with the actual testimonial quote from the physiotherapist. Focus on their assessment of the clinical or patient-facing value of the design.",
+        "name": "Interviewee Name",
+        "role": "Registered Physiotherapist",
+        "organization": "Clinic / Hospital Name"
+      },
+      {
+        "quote": "Replace with the actual testimonial from the third interviewee. What was their overall take on the project and its potential?",
+        "name": "Interviewee Name",
+        "role": "Occupational Therapist / Other",
+        "organization": "Organization Name"
+      }
+    ]
+  },
+  "closing": {
+    "heading": "A Foundation for What Comes Next",
+    "body": "Replace this with your closing statement. This is your final opportunity to speak directly to the reader — an admissions officer evaluating your passion, your process, and your potential. What does the Movara project say about who you are as an engineer, and what kind of engineer you want to become?",
+    "signature": "Your Name"
+  }
+}

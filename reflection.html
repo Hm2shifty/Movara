@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reflection — Movara Portfolio</title>
+  <meta name="description" content="Project reflection, key learnings, areas for improvement, and professional testimonials on the Movara transfer bench." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* Reflection two-column */
+    .reflection-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
+    .reflection-col { background: var(--white); border: 1px solid var(--border-soft); border-radius: var(--radius-lg); padding: 36px; }
+    .col-label-wrap {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 24px;
+      display: flex; align-items: center; gap: 10px;
+      padding-bottom: 16px; border-bottom: 2px solid var(--border-soft);
+    }
+    .col-label-wrap.good  { border-bottom-color: #27ae60; color: #27ae60; }
+    .col-label-wrap.improve { border-bottom-color: #d4780a; color: #d4780a; }
+
+    /* Learnings */
+    .learnings-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; }
+    .learning-card {
+      background: var(--white); border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg); padding: 32px;
+      display: flex; gap: 20px; align-items: flex-start;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .learning-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .learning-icon { font-size: 1.8rem; flex-shrink: 0; margin-top: 2px; }
+    .learning-card h4 { margin-bottom: 10px; }
+
+    /* Testimonials */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 48px; }
+
+    /* Closing statement */
+    .closing-section {
+      background: var(--midnight-deep);
+      color: rgba(255,255,255,0.85);
+      padding: var(--section-pad) 0;
+      text-align: center;
+    }
+    .closing-section h2 { color: #fff; margin-bottom: 24px; }
+    .closing-section p  { color: rgba(255,255,255,0.65); max-width: 680px; margin: 0 auto 32px; font-size: 1.05rem; line-height: 1.8; }
+    .closing-signature {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: rgba(255,255,255,0.5);
+      font-style: italic;
+      margin-top: 36px;
+    }
+
+    @media (max-width: 1024px) { .testimonials-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 768px)  {
+      .reflection-layout, .learnings-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav id="nav" role="navigation" aria-label="Main navigation"></nav>
+
+  <!-- BANNER -->
+  <header class="page-banner">
+    <div class="container">
+      <span class="section-label" id="banner-label"></span>
+      <h1 id="banner-heading">Loading…</h1>
+      <p class="lead" id="banner-lead"></p>
+    </div>
+  </header>
+
+  <!-- REFLECTION -->
+  <section id="reflection">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-label" id="ref-label"></span>
+        <h2 id="ref-heading"></h2>
+        <div class="divider"></div>
+      </div>
+      <div class="reflection-layout">
+        <div class="reflection-col" data-reveal>
+          <div class="col-label-wrap good" id="went-well-label"></div>
+          <ul class="feature-list" id="went-well-list" style="margin-top:4px;"></ul>
+        </div>
+        <div class="reflection-col" data-reveal data-reveal-delay="2">
+          <div class="col-label-wrap improve" id="improve-label"></div>
+          <ul class="feature-list" id="improve-list" style="margin-top:4px;"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY LEARNINGS -->
+  <section id="learnings" style="background:var(--bg-soft);">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-label" id="learn-label"></span>
+        <h2 id="learn-heading"></h2>
+        <div class="divider"></div>
+      </div>
+      <div class="learnings-grid" id="learnings-grid"></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-label" id="test-label"></span>
+        <h2 id="test-heading"></h2>
+        <div class="divider"></div>
+        <p id="test-intro"></p>
+      </div>
+      <div class="testimonials-grid" id="testimonials-grid"></div>
+    </div>
+  </section>
+
+  <!-- CLOSING STATEMENT -->
+  <section class="closing-section" id="closing">
+    <div class="container">
+      <div data-reveal>
+        <h2 id="closing-heading"></h2>
+        <p id="closing-body"></p>
+        <div class="closing-signature" id="closing-sig"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer"></footer>
+
+  <script src="js/nav.js"></script>
+  <script src="js/loader.js"></script>
+  <script>
+    buildNav('reflection.html');
+    buildFooter();
+
+    fetch('data/page5.json')
+      .then(r => r.json())
+      .then(d => {
+        document.title = d.meta.title;
+
+        // Banner
+        document.getElementById('banner-label').textContent   = d.banner.section_label;
+        document.getElementById('banner-heading').textContent = d.banner.heading;
+        document.getElementById('banner-lead').textContent    = d.banner.lead;
+
+        // Reflection
+        document.getElementById('ref-label').textContent     = d.reflection.section_label;
+        document.getElementById('ref-heading').textContent   = d.reflection.heading;
+        document.getElementById('went-well-label').textContent = d.reflection.went_well.label;
+        document.getElementById('improve-label').textContent   = d.reflection.improve.label;
+        document.getElementById('went-well-list').innerHTML   = d.reflection.went_well.items.map(i => `<li>${i}</li>`).join('');
+        document.getElementById('improve-list').innerHTML     = d.reflection.improve.items.map(i => `<li>${i}</li>`).join('');
+
+        // Learnings
+        document.getElementById('learn-label').textContent   = d.learnings.section_label;
+        document.getElementById('learn-heading').textContent = d.learnings.heading;
+        document.getElementById('learnings-grid').innerHTML  = d.learnings.items.map((item, i) => `
+          <div class="learning-card" data-reveal data-reveal-delay="${i + 1}">
+            <span class="learning-icon">${item.icon}</span>
+            <div>
+              <h4>${item.title}</h4>
+              <p>${item.body}</p>
+            </div>
+          </div>
+        `).join('');
+
+        // Testimonials
+        document.getElementById('test-label').textContent   = d.testimonials.section_label;
+        document.getElementById('test-heading').textContent = d.testimonials.heading;
+        document.getElementById('test-intro').textContent   = d.testimonials.intro;
+        document.getElementById('testimonials-grid').innerHTML = d.testimonials.quotes.map((q, i) => `
+          <div class="quote-card" style="border-radius:var(--radius-lg); background:var(--white); border:1px solid var(--border-soft); border-left:4px solid var(--midnight);" data-reveal data-reveal-delay="${i + 1}">
+            <p class="quote-text">"${q.quote}"</p>
+            <div class="quote-author">
+              <div class="quote-avatar">👤</div>
+              <div>
+                <div class="quote-name">${q.name}</div>
+                <div class="quote-role">${q.role}${q.organization ? ' · ' + q.organization : ''}</div>
+              </div>
+            </div>
+          </div>
+        `).join('');
+
+        // Closing
+        document.getElementById('closing-heading').textContent = d.closing.heading;
+        document.getElementById('closing-body').textContent   = d.closing.body;
+        document.getElementById('closing-sig').textContent    = '— ' + d.closing.signature;
+
+        initReveal();
+        initCounters();
+      })
+      .catch(err => console.error('Failed to load page5.json:', err));
+  </script>
+</body>
+</html>

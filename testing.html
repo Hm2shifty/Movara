@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testing & Engineering — Movara Portfolio</title>
+  <meta name="description" content="FMEA, free body diagram analysis, material selection, and structural testing for the Movara transfer bench." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* FMEA RPN colouring */
+    .fmea-rpn { font-weight: 700; padding: 3px 10px; border-radius: 4px; display: inline-block; }
+
+    /* FBD Cards */
+    .fbd-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+    .fbd-card { background: var(--white); border: 1px solid var(--border-soft); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
+    .fbd-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+    .fbd-card .img-placeholder { height: 200px; }
+    .fbd-card-body { padding: 24px; }
+    .fbd-card-body h4 { margin-bottom: 10px; }
+
+    /* Materials */
+    .material-section { margin-bottom: 48px; }
+    .material-section h3 { margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--border-soft); }
+    .mat-winner-badge {
+      display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: #1a7340; background: #e8f8ef;
+      border: 1px solid #a8d8b9; border-radius: 50px; padding: 3px 10px; margin-left: 8px;
+    }
+
+    /* Calculations */
+    .calc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 48px; }
+    .calc-card {
+      background: var(--bg-soft); border: 1px solid var(--border-soft);
+      border-radius: var(--radius-md); padding: 28px;
+    }
+    .calc-formula {
+      font-family: 'Courier New', monospace;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 10px 16px;
+      font-size: 0.9rem; color: var(--midnight);
+      margin: 12px 0; display: block;
+    }
+    .calc-result {
+      font-size: 1.1rem; font-weight: 700; color: var(--midnight-deep);
+      margin: 8px 0;
+    }
+
+    /* Summary points */
+    .summary-points { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 32px; margin-top: 32px; }
+    .summary-points h4 { margin-bottom: 16px; }
+
+    @media (max-width: 1024px) { .fbd-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 768px)  { .fbd-grid, .calc-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav id="nav" role="navigation" aria-label="Main navigation"></nav>
+
+  <!-- BANNER -->
+  <header class="page-banner">
+    <div class="container">
+      <span class="section-label" id="banner-label"></span>
+      <h1 id="banner-heading">Loading…</h1>
+      <p class="lead" id="banner-lead"></p>
+    </div>
+  </header>
+
+  <!-- FMEA -->
+  <section id="fmea">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-label" id="fmea-label"></span>
+        <h2 id="fmea-heading"></h2>
+        <div class="divider"></div>
+        <p id="fmea-intro"></p>
+      </div>
+      <p id="fmea-note" style="text-align:center; font-size:0.85rem; color:var(--muted); margin-bottom:24px;"></p>
+      <div class="table-wrap" data-reveal>
+        <table id="fmea-table" style="font-size:0.85rem;">
+          <thead><tr>
+            <th>Component</th><th>Failure Mode</th><th>Effect</th><th>Cause</th>
+            <th>S</th><th>O</th><th>D</th><th>RPN</th><th>Mitigation</th>
+          </tr></thead>
+          <tbody id="fmea-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FREE BODY DIAGRAMS -->
+  <section id="fbd" style="background:var(--bg-soft);">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-label" id="fbd-label"></span>
+        <h2 id="fbd-heading"></h2>
+        <div class="divider"></div>
+        <p id="fbd-intro"></p>
+      </div>
+      <div class="fbd-grid" id="fbd-grid"></div>
+      <div class="summary-points" data-reveal id="fbd-summary" style="display:none;"></div>
+    </div>
+  </section>
+
+  <!-- MATERIAL SELECTION -->
+  <section id="materials">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-label" id="mat-label"></span>
+        <h2 id="mat-heading"></h2>
+        <div class="divider"></div>
+        <p id="mat-intro"></p>
+      </div>
+      <div id="mat-sections"></div>
+    </div>
+  </section>
+
+  <!-- CALCULATIONS -->
+  <section id="calculations" style="background:var(--bg-soft);">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-label" id="calc-label">Engineering Calculations</span>
+        <h2 id="calc-heading"></h2>
+        <div class="divider"></div>
+      </div>
+      <div class="calc-grid" id="calc-grid"></div>
+    </div>
+  </section>
+
+  <footer id="footer"></footer>
+
+  <script src="js/nav.js"></script>
+  <script src="js/loader.js"></script>
+  <script>
+    buildNav('testing.html');
+    buildFooter();
+
+    function rpnClass(rpn) {
+      if (rpn >= 150) return 'rpn-high';
+      if (rpn >= 60)  return 'rpn-medium';
+      return 'rpn-low';
+    }
+
+    function scoreClass(s) {
+      if (s >= 4.5) return 'score-5';
+      if (s >= 3.5) return 'score-4';
+      if (s >= 2.5) return 'score-3';
+      if (s >= 1.5) return 'score-2';
+      return 'score-1';
+    }
+
+    function tryLoadImg(src, placeholder, caption, containerEl) {
+      containerEl.innerHTML = `
+        <div class="img-placeholder" style="height:200px;">
+          <span class="ph-icon">📐</span>
+          <span>${placeholder}</span>
+          <span style="font-size:0.72rem;opacity:0.6;">assets/diagrams/ folder</span>
+        </div>`;
+      const img = new Image();
+      img.onload = () => {
+        containerEl.innerHTML = `<img src="${src}" alt="${caption}" style="width:100%;height:200px;object-fit:contain;display:block;background:var(--bg-soft);" />`;
+      };
+      img.src = src;
+    }
+
+    fetch('data/page4.json')
+      .then(r => r.json())
+      .then(d => {
+        document.title = d.meta.title;
+
+        // Banner
+        document.getElementById('banner-label').textContent   = d.banner.section_label;
+        document.getElementById('banner-heading').textContent = d.banner.heading;
+        document.getElementById('banner-lead').textContent    = d.banner.lead;
+
+        // FMEA
+        document.getElementById('fmea-label').textContent   = d.fmea.section_label;
+        document.getElementById('fmea-heading').textContent = d.fmea.heading;
+        document.getElementById('fmea-intro').textContent   = d.fmea.intro;
+        document.getElementById('fmea-note').textContent    = d.fmea.note;
+        document.getElementById('fmea-tbody').innerHTML = d.fmea.rows.map(row => {
+          const rpn = row.S * row.O * row.D;
+          const cls = rpnClass(rpn);
+          return `<tr>
+            <td>${row.component}</td>
+            <td>${row.failure_mode}</td>
+            <td>${row.effect}</td>
+            <td>${row.cause}</td>
+            <td>${row.S}</td><td>${row.O}</td><td>${row.D}</td>
+            <td><span class="rpn-badge ${cls}">${rpn}</span></td>
+            <td>${row.mitigation}</td>
+          </tr>`;
+        }).join('');
+
+        // FBD
+        document.getElementById('fbd-label').textContent   = d.fbd.section_label;
+        document.getElementById('fbd-heading').textContent = d.fbd.heading;
+        document.getElementById('fbd-intro').textContent   = d.fbd.intro;
+        document.getElementById('fbd-grid').innerHTML = d.fbd.diagrams.map((diag, i) => `
+          <div class="fbd-card" data-reveal data-reveal-delay="${i + 1}">
+            <div id="fbd-img-${i}"></div>
+            <div class="fbd-card-body">
+              <h4>${diag.title}</h4>
+              <p style="font-size:0.88rem;">${diag.description}</p>
+            </div>
+          </div>
+        `).join('');
+
+        d.fbd.diagrams.forEach((diag, i) => {
+          tryLoadImg(diag.src, diag.placeholder, diag.caption, document.getElementById(`fbd-img-${i}`));
+        });
+
+        // FBD Summary
+        const sumEl = document.getElementById('fbd-summary');
+        if (d.fbd.summary && d.fbd.summary.items.length) {
+          sumEl.style.display = 'block';
+          sumEl.innerHTML = `
+            <h4>${d.fbd.summary.heading}</h4>
+            <ul class="feature-list">
+              ${d.fbd.summary.items.map(item => `<li>${item}</li>`).join('')}
+            </ul>`;
+        }
+
+        // Materials
+        document.getElementById('mat-label').textContent   = d.materials.section_label;
+        document.getElementById('mat-heading').textContent = d.materials.heading;
+        document.getElementById('mat-intro').textContent   = d.materials.intro;
+
+        document.getElementById('mat-sections').innerHTML = d.materials.components.map((comp, ci) => `
+          <div class="material-section" data-reveal>
+            <h3>${comp.name}</h3>
+            <div class="table-wrap" style="margin-bottom:20px;">
+              <table>
+                <thead><tr>
+                  <th>Material</th>
+                  ${d.materials.criteria.map(c => `<th>${c}</th>`).join('')}
+                </tr></thead>
+                <tbody>
+                  ${comp.materials.map(mat => `
+                    <tr class="${mat.selected ? 'product-row-highlight' : ''}">
+                      <td>${mat.selected ? '★ ' : ''}${mat.name}${mat.selected ? `<span class="mat-winner-badge">Selected</span>` : ''}</td>
+                      ${mat.scores.map(s => `<td><span class="comparison-score score-${s}">${s}</span></td>`).join('')}
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+            <div class="quote-card" style="border-left-color:var(--muted);">
+              <p style="margin-top:0;padding-top:0;font-style:italic;">${comp.rationale}</p>
+            </div>
+          </div>
+        `).join('');
+
+        // Calculations
+        document.getElementById('calc-heading').textContent = d.calculations.heading;
+        document.getElementById('calc-grid').innerHTML = d.calculations.items.map((item, i) => `
+          <div class="calc-card" data-reveal data-reveal-delay="${i + 1}">
+            <h4>${item.title}</h4>
+            <code class="calc-formula">${item.formula}</code>
+            <div class="calc-result">= ${item.result}</div>
+            <p style="font-size:0.85rem; margin-top:8px;">${item.notes}</p>
+          </div>
+        `).join('');
+
+        initReveal();
+        initCounters();
+      })
+      .catch(err => console.error('Failed to load page4.json:', err));
+  </script>
+</body>
+</html>

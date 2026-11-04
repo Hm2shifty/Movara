@@ -1,0 +1,181 @@
+{
+  "meta": {
+    "title": "Testing & Engineering — Movara Portfolio",
+    "description": "FMEA, free body diagram analysis, material selection, and structural testing for the Movara transfer bench."
+  },
+  "banner": {
+    "section_label": "Page 04 — Testing & Engineering",
+    "heading": "Validating the Design Through Rigorous Analysis",
+    "lead": "Every design decision was subjected to formal engineering analysis — from failure mode identification to structural load calculation and material property comparison."
+  },
+  "fmea": {
+    "section_label": "FMEA",
+    "heading": "Failure Mode & Effects Analysis",
+    "intro": "A Failure Mode and Effects Analysis (FMEA) was conducted to systematically identify potential failure modes in the Movara design, assess their severity, and determine risk priority numbers (RPN = Severity × Occurrence × Detectability). Higher RPN values drove additional design revisions.",
+    "note": "Edit the rows array to match your actual FMEA. S = Severity (1–10), O = Occurrence (1–10), D = Detectability (1–10). RPN = S × O × D.",
+    "columns": ["Component", "Failure Mode", "Effect", "Cause", "S", "O", "D", "RPN", "Mitigation"],
+    "rows": [
+      {
+        "component": "Lateral Rail",
+        "failure_mode": "Rail corrosion / binding",
+        "effect": "Loss of smooth lateral motion; user unable to transfer",
+        "cause": "Prolonged exposure to water and cleaning chemicals",
+        "S": 7, "O": 4, "D": 3,
+        "mitigation": "Anodized aluminium rail with sealed bearing carriages; periodic lubrication protocol"
+      },
+      {
+        "component": "Rotation Bearing",
+        "failure_mode": "Bearing seizure",
+        "effect": "Loss of rotational movement; user becomes stuck mid-rotation",
+        "cause": "Corrosion or debris ingress into bearing race",
+        "S": 8, "O": 3, "D": 4,
+        "mitigation": "Sealed stainless steel bearing with rubber lip seal; rotation stop prevents overloading"
+      },
+      {
+        "component": "Elevation Linkage",
+        "failure_mode": "Pin shear / linkage collapse",
+        "effect": "Sudden loss of seat height; risk of fall",
+        "cause": "Material fatigue under repeated cyclic loading",
+        "S": 10, "O": 2, "D": 3,
+        "mitigation": "Safety factor of 3× applied to all linkage pins; redundant locking collar on adjustment mechanism"
+      },
+      {
+        "component": "Frame Legs",
+        "failure_mode": "Tip-over under eccentric load",
+        "effect": "Bench tips; user falls into tub",
+        "cause": "User weight applied outside centre of mass envelope",
+        "S": 10, "O": 2, "D": 2,
+        "mitigation": "Stability analysis conducted; non-slip feet; wider stance geometry enforced by frame design"
+      },
+      {
+        "component": "Seat Surface",
+        "failure_mode": "Cracking under impact",
+        "effect": "Sharp edges; skin laceration; loss of structural integrity",
+        "cause": "Drop impact or over-loading above rated capacity",
+        "S": 6, "O": 2, "D": 5,
+        "mitigation": "HDPE selected for impact resistance; rated load label affixed; rounded edge profile"
+      },
+      {
+        "component": "Locking Mechanisms",
+        "failure_mode": "Latch slippage under load",
+        "effect": "Unintended movement during use; fall risk",
+        "cause": "Inadequate clamping force in wet conditions",
+        "S": 9, "O": 3, "D": 3,
+        "mitigation": "Positive-engagement pin lock with spring return; tested under wet load conditions"
+      },
+      {
+        "component": "Add Component",
+        "failure_mode": "Add failure mode",
+        "effect": "Add effect on user",
+        "cause": "Add root cause",
+        "S": 0, "O": 0, "D": 0,
+        "mitigation": "Add your mitigation strategy"
+      }
+    ]
+  },
+  "fbd": {
+    "section_label": "Free Body Diagram",
+    "heading": "Structural Load Analysis",
+    "intro": "Free body diagrams were developed for the critical load-bearing components of the Movara bench. The analysis establishes the design load envelope and verifies that all structural members meet the minimum safety factor requirements under worst-case loading scenarios.",
+    "diagrams": [
+      {
+        "title": "Full Assembly — Seated Load Case",
+        "src": "assets/diagrams/fbd_full.png",
+        "caption": "FBD: Full assembly under maximum seated load (worst-case eccentric position)",
+        "placeholder": "Drop FBD image: Full Assembly Seated Load",
+        "description": "Replace this text with a description of this free body diagram. What loads are shown? What assumptions were made (e.g., user mass, COG location)? What were the calculated reaction forces at each support point?"
+      },
+      {
+        "title": "Lateral Rail — Transfer Load Case",
+        "src": "assets/diagrams/fbd_rail.png",
+        "caption": "FBD: Lateral rail under dynamic transfer loading",
+        "placeholder": "Drop FBD image: Rail Load Case",
+        "description": "Replace this with the rail-specific analysis description. What is the moment arm from the carriage to the furthest support point? What shear and bending moment values were calculated?"
+      },
+      {
+        "title": "Elevation Linkage — Compression Load Case",
+        "src": "assets/diagrams/fbd_linkage.png",
+        "caption": "FBD: Four-bar linkage under vertical compression",
+        "placeholder": "Drop FBD image: Linkage Compression",
+        "description": "Replace this with the linkage analysis. What pin forces were calculated? What safety factor was applied? How does the geometry affect the mechanical advantage at different height settings?"
+      }
+    ],
+    "summary": {
+      "heading": "Key Structural Findings",
+      "items": [
+        "Replace with your key finding — e.g., Maximum reaction force at tub-contact legs: X N under worst-case loading.",
+        "Replace with your key finding — e.g., Lateral rail bending moment: X N·m; selected section modulus provides SF = X.",
+        "Replace with your key finding — e.g., Elevation linkage pins sized for X kN shear; rated at X kN.",
+        "Add additional key findings from your FBD analysis here."
+      ]
+    }
+  },
+  "materials": {
+    "section_label": "Material Selection",
+    "heading": "Choosing the Right Materials",
+    "intro": "Material selection was guided by a weighted decision matrix, balancing structural performance, corrosion resistance, weight, machinability, and cost across candidate materials for each major component group.",
+    "note": "Edit the matrix rows to reflect your actual material comparison. Scores are 1–5 per criterion.",
+    "criteria": ["Strength", "Corrosion Resistance", "Weight", "Machinability", "Cost", "Total"],
+    "weights": [0.30, 0.25, 0.15, 0.15, 0.15, 1.0],
+    "components": [
+      {
+        "name": "Frame — Structural Members",
+        "materials": [
+          { "name": "6061-T6 Aluminium Alloy", "scores": [4, 5, 5, 5, 3], "selected": true },
+          { "name": "304 Stainless Steel",      "scores": [5, 5, 2, 3, 2], "selected": false },
+          { "name": "Carbon Steel (Coated)",     "scores": [5, 2, 3, 4, 5], "selected": false }
+        ],
+        "rationale": "6061-T6 aluminium was selected for the frame due to its excellent strength-to-weight ratio, inherent corrosion resistance in wet environments, and compatibility with standard machining and extrusion processes. Its lower density compared to steel reduces the overall bench weight, improving portability."
+      },
+      {
+        "name": "Seat Surface",
+        "materials": [
+          { "name": "High-Density Polyethylene (HDPE)", "scores": [3, 5, 5, 4, 4], "selected": true },
+          { "name": "ABS Plastic",                       "scores": [3, 4, 5, 4, 4], "selected": false },
+          { "name": "Aluminium (Textured)",               "scores": [4, 4, 4, 4, 2], "selected": false }
+        ],
+        "rationale": "HDPE was selected for the seat surface for its excellent chemical resistance, impact toughness, and comfortable tactile properties. It is non-porous (hygenic in a wet environment), UV stable, and can be textured for grip without additional surface treatments."
+      },
+      {
+        "name": "Rail & Carriage System",
+        "materials": [
+          { "name": "Anodized Aluminium Rail + Nylon Carriage", "scores": [4, 5, 4, 4, 3], "selected": true },
+          { "name": "Stainless Steel Rail + Bronze Bushing",     "scores": [5, 5, 2, 3, 2], "selected": false },
+          { "name": "PVC Rail + PTFE Pad",                       "scores": [2, 5, 5, 4, 5], "selected": false }
+        ],
+        "rationale": "Anodized aluminium rail with self-lubricating nylon carriages provides smooth, low-friction lateral movement while remaining resistant to water and chemical exposure. The combination minimises maintenance requirements and eliminates the need for external lubrication in normal use."
+      }
+    ]
+  },
+  "calculations": {
+    "section_label": "Engineering Calculations",
+    "heading": "Key Analysis Results",
+    "note": "Add or edit calculation entries below. Use LaTeX-style notation in the formula field if desired.",
+    "items": [
+      {
+        "title": "Design Load",
+        "formula": "F = m × g = X kg × 9.81 m/s²",
+        "result": "Replace with your calculated design load (N)",
+        "notes": "Assumed user mass of X kg plus a dynamic factor of X."
+      },
+      {
+        "title": "Safety Factor — Frame Members",
+        "formula": "SF = F_yield / F_applied",
+        "result": "Replace with your calculated safety factor",
+        "notes": "All primary structural members meet a minimum SF of X under the design load envelope."
+      },
+      {
+        "title": "Rail Bending Moment",
+        "formula": "M = F × L",
+        "result": "Replace with your bending moment result (N·m)",
+        "notes": "Worst case at mid-span with full eccentric load. Section modulus verified against yield criterion."
+      },
+      {
+        "title": "Add Your Calculation",
+        "formula": "Replace with formula",
+        "result": "Replace with result and units",
+        "notes": "Add context or assumptions for this calculation."
+      }
+    ]
+  }
+}

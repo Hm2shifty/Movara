@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "title": "Movara — Advanced Bathtub Transfer Bench Innovation",
+    "description": "An advanced bathtub transfer bench providing lateral, longitudinal, elevation, and rotational movement to support senior mobility and independence."
+  },
+  "hero": {
+    "eyebrow": "Senior Mobility Engineering Project",
+    "headline": "Redefining Movement in the Bathtub",
+    "subheadline": "An advanced transfer bench innovation engineered to restore independence, safety, and dignity to seniors navigating the most challenging ADL environment.",
+    "cta_primary": { "label": "Explore the Innovation", "href": "#innovation" },
+    "cta_secondary": { "label": "View Design Process", "href": "process.html" }
+  },
+  "stats": [
+    { "value": 4, "suffix": "", "label": "Planes of Movement" },
+    { "value": 180, "suffix": "°", "label": "Rotational Range" },
+    { "value": 80, "suffix": "%", "label": "of Falls Occur in the Bathroom" },
+    { "value": 1, "suffix": " in 3", "label": "Seniors Experience a Fall Annually" }
+  ],
+  "problem": {
+    "section_label": "The Problem",
+    "heading": "Why the Bathroom is the Most Dangerous Room",
+    "body": "For seniors and individuals with limited mobility, the bathtub represents one of the most physically demanding and risk-laden environments in daily life. Existing transfer bench solutions address entry and exit but neglect the full range of activities performed within the bathtub — reaching for soap, washing different areas of the body, and repositioning safely. This gap in the market creates unnecessary risk and dependence.",
+    "points": [
+      "Existing products provide only one plane of lateral movement — in and out of the tub.",
+      "Seniors must perform dangerous twisting and reaching motions with no mechanical support.",
+      "Conventional benches do not adjust seat height, forcing users into awkward eccentric loading.",
+      "No existing consumer product offers rotational capability for in-tub reach tasks.",
+      "The result: increased fall risk, reduced bathing independence, and loss of dignity."
+    ]
+  },
+  "movements": {
+    "section_label": "The Innovation",
+    "heading": "Four Planes of Movement. One Unified System.",
+    "intro": "The Movara transfer bench was engineered around a biomechanically informed movement model — combining four distinct planes of motion into a single, integrated assistive device.",
+    "cards": [
+      {
+        "icon": "↔",
+        "title": "Lateral Transfer",
+        "description": "The seat slides across the full width of the frame, allowing the user to transition from outside the tub to inside with a smooth, guided, controlled movement. Eliminates the step-over hazard."
+      },
+      {
+        "icon": "↕",
+        "title": "Longitudinal Positioning",
+        "description": "Back-and-forth movement along the length of the bathtub allows users to position themselves precisely under the shower or over the drain, addressing the full bathing space."
+      },
+      {
+        "icon": "⬆",
+        "title": "Elevation & Depression",
+        "description": "Adjustable seat height assists with eccentric and concentric muscle loading, reducing strain during sit-to-stand transitions and compensating for varying bathtub wall heights."
+      },
+      {
+        "icon": "↻",
+        "title": "180° Rotation",
+        "description": "A mechanically limited rotation of up to 180° enables users to pivot toward the showerhead, faucets, grab bars, or caregivers — drastically expanding the functional reach envelope."
+      }
+    ]
+  },
+  "cad_gallery": {
+    "section_label": "CAD Design",
+    "heading": "Precision-Engineered in SOLIDWORKS",
+    "body": "Every component of the Movara transfer bench was modelled using SOLIDWORKS, with iterative design revisions driven by physical testing outcomes, ergonomic analysis, and professional feedback.",
+    "images": [
+      { "src": "assets/cad/overview.png",    "caption": "Full Assembly — Isometric View",    "placeholder": "Drop CAD render: Full Assembly" },
+      { "src": "assets/cad/lateral.png",     "caption": "Lateral Slide Mechanism",           "placeholder": "Drop CAD render: Lateral Mechanism" },
+      { "src": "assets/cad/rotation.png",    "caption": "Rotation Joint Detail",             "placeholder": "Drop CAD render: Rotation Joint" },
+      { "src": "assets/cad/elevation.png",   "caption": "Elevation Linkage System",          "placeholder": "Drop CAD render: Elevation System" },
+      { "src": "assets/cad/seat.png",        "caption": "Seat Surface & Frame Interface",    "placeholder": "Drop CAD render: Seat Surface" },
+      { "src": "assets/cad/exploded.png",    "caption": "Exploded View — All Components",    "placeholder": "Drop CAD render: Exploded View" }
+    ]
+  },
+  "why_it_matters": {
+    "section_label": "Why It Matters",
+    "heading": "Engineering That Serves Human Dignity",
+    "body": "Beyond the mechanical specifications, the Movara project represents a commitment to human-centred engineering — designing systems that extend independence, reduce caregiver burden, and restore dignity in everyday moments. For the aging population, this is not a luxury; it is a necessity.",
+    "cta": { "label": "Read the Full Process", "href": "introduction.html" }
+  }
+}

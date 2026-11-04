@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "title": "Introduction — Movara Portfolio",
+    "description": "How the problem was identified, why the project was pursued, and professional interviews with engineers and physiotherapists."
+  },
+  "banner": {
+    "section_label": "Page 02 — Introduction",
+    "heading": "From Observation to Innovation",
+    "lead": "A personal encounter with the limitations of existing assistive devices sparked a months-long engineering investigation into senior bathing mobility."
+  },
+  "origin": {
+    "section_label": "The Origin",
+    "heading": "How I Identified the Problem",
+    "paragraphs": [
+      "Add your personal narrative here — describe the moment or experience that led you to identify the problem. What did you observe? Who was affected? What made you decide this was worth solving?",
+      "Describe your early research phase: what you read, what products you found, what gaps you noticed. Explain why this problem resonated with you as a future engineer."
+    ],
+    "image": {
+      "src": "assets/photos/origin.jpg",
+      "caption": "Early sketches and problem framing notes",
+      "placeholder": "Drop a photo: early sketches / notes / inspiration"
+    }
+  },
+  "why_this_project": {
+    "section_label": "Why This Project",
+    "heading": "A Commitment to Human-Centred Engineering",
+    "body": "Replace this text with your personal motivation for choosing this specific project. Consider: What engineering skills did you want to develop? How does this project reflect your values as an aspiring engineer? What gap in the market or in society did you feel compelled to address?",
+    "pillars": [
+      { "icon": "🔬", "title": "Biomedical Lens",    "body": "Applying engineering principles to real healthcare outcomes and functional human movement." },
+      { "icon": "⚙",  "title": "Mechanical Depth",   "body": "Exploring mechanisms, kinematics, and structural design through a hands-on innovation challenge." },
+      { "icon": "🤝",  "title": "Real Impact",        "body": "Designing for a vulnerable population whose daily independence is affected by the existing gap in the market." },
+      { "icon": "📐",  "title": "Iterative Process",  "body": "Experiencing the full engineering design loop — from need identification to physical prototype testing." }
+    ]
+  },
+  "timeline": {
+    "section_label": "Project Timeline",
+    "heading": "Month by Month",
+    "items": [
+      { "date": "Month 1",   "title": "Problem Identification",   "body": "Observed limitations in existing transfer bench products. Conducted initial literature review on senior falls and bathing ADLs." },
+      { "date": "Month 2",   "title": "Background Research",      "body": "Reviewed clinical literature, existing patents, and assistive technology standards. Identified key functional gaps." },
+      { "date": "Month 3",   "title": "Professional Interviews",  "body": "Conducted structured interviews with a mechanical engineer, physiotherapist, and occupational therapist." },
+      { "date": "Month 4",   "title": "Requirements & Ideation",  "body": "Defined project requirements. Generated and evaluated multiple design concepts using morph charts and decision matrices." },
+      { "date": "Month 5",   "title": "CAD Design",               "body": "Developed full 3D model in SOLIDWORKS. Iterated on mechanism geometry based on ergonomic constraints." },
+      { "date": "Month 6",   "title": "Testing & Analysis",       "body": "Completed FMEA, free body diagram analysis, and material selection. Conducted physical prototype evaluation." },
+      { "date": "Month 7",   "title": "Reflection & Submission",  "body": "Compiled findings, gathered testimonials, and completed portfolio documentation." }
+    ]
+  },
+  "interviews": {
+    "section_label": "Professional Interviews",
+    "heading": "Learning from Experts in the Field",
+    "intro": "To ground the engineering decisions in real-world clinical and professional insight, structured interviews were conducted with three domain experts. Their feedback directly shaped the final design.",
+    "professionals": [
+      {
+        "name": "Interviewee Name",
+        "role": "Mechanical Engineer",
+        "organization": "Organization / Company Name",
+        "preview_quote": "Add a short, compelling quote from the interview here — something that influenced a key design decision.",
+        "key_themes": ["Theme 1", "Theme 2", "Theme 3"],
+        "full_summary": "Replace this with a full paragraph summary of the interview. What questions did you ask? What were their most valuable insights? How did their expertise change or validate your design approach? Be specific about the engineering or clinical knowledge they brought to the conversation."
+      },
+      {
+        "name": "Interviewee Name",
+        "role": "Registered Physiotherapist",
+        "organization": "Clinic / Hospital Name",
+        "preview_quote": "Add a short quote from this interviewee that highlights a key insight about patient mobility or clinical needs.",
+        "key_themes": ["Biomechanics", "Patient Limitations", "Clinical Workflow"],
+        "full_summary": "Replace this with a full paragraph summary of the physiotherapist interview. What did they say about how seniors actually move in a bathtub? What contraindications or safety concerns did they raise? How did their clinical perspective shape your functional requirements?"
+      },
+      {
+        "name": "Interviewee Name",
+        "role": "Occupational Therapist / Other Professional",
+        "organization": "Organization Name",
+        "preview_quote": "Add a memorable quote from this interviewee about assistive technology design or patient independence.",
+        "key_themes": ["Assistive Technology", "User Independence", "Design Usability"],
+        "full_summary": "Replace this with a full paragraph summary of the third interview. What was unique about this professional's perspective? How did they evaluate the concept when you presented it? What would they want to see improved or validated further?"
+      }
+    ]
+  }
+}

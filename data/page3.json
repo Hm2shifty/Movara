@@ -1,0 +1,185 @@
+{
+  "meta": {
+    "title": "Design Process — Movara Portfolio",
+    "description": "Requirements identification, solution generation, morph charts, and existing product comparison for the Movara transfer bench."
+  },
+  "banner": {
+    "section_label": "Page 03 — Design Process",
+    "heading": "From Requirements to Concept",
+    "lead": "The behind-the-scenes analytical work that defined what the Movara transfer bench needed to be — and ruled out what it should not be."
+  },
+  "requirements": {
+    "section_label": "Project Requirements",
+    "heading": "What Does the Ideal Solution Need to Do?",
+    "intro": "Based on background research, clinical interviews, and market analysis, a structured set of functional, ergonomic, and safety requirements was established to guide the design process.",
+    "categories": [
+      {
+        "title": "Functional Requirements",
+        "icon": "⚙",
+        "items": [
+          "Must enable lateral transfer across the full tub width",
+          "Must support longitudinal repositioning within the tub",
+          "Must provide adjustable seat height for varying users",
+          "Must allow rotational movement up to 180°",
+          "Add your functional requirements here — be as specific as possible"
+        ]
+      },
+      {
+        "title": "Ergonomic Requirements",
+        "icon": "🤲",
+        "items": [
+          "Seat surface must be comfortable for prolonged use in a wet environment",
+          "Controls must be operable with limited hand dexterity",
+          "Must accommodate users of varying weight and body dimension",
+          "Must not require the user to bear weight during transition",
+          "Add your ergonomic requirements here"
+        ]
+      },
+      {
+        "title": "Safety Requirements",
+        "icon": "🛡",
+        "items": [
+          "Must not tip or shift under maximum design load",
+          "All moving parts must include mechanical travel limits",
+          "Materials must be corrosion-resistant and non-slip in wet conditions",
+          "Must meet or exceed applicable assistive device safety standards",
+          "Add your safety requirements here"
+        ]
+      },
+      {
+        "title": "Usability & Accessibility",
+        "icon": "♿",
+        "items": [
+          "Must be installable without permanent bathroom modifications",
+          "Should be adjustable by the user or a single caregiver",
+          "Must be compatible with standard North American bathtub dimensions",
+          "Add your usability requirements here"
+        ]
+      }
+    ]
+  },
+  "ideation": {
+    "section_label": "Solution Generation",
+    "heading": "How Multiple Concepts Were Explored",
+    "body": "Replace this text with a description of your ideation process. How did you generate your design concepts? Did you use brainstorming sessions, sketching, or reference to existing engineering solutions? Describe the range of approaches you considered before narrowing down.",
+    "image": {
+      "src": "assets/diagrams/ideation.jpg",
+      "caption": "Ideation sketches and early concept drawings",
+      "placeholder": "Drop image: ideation sketches / concept drawings"
+    }
+  },
+  "morph_chart": {
+    "section_label": "Morph Chart",
+    "heading": "Comparing Design Attributes Side by Side",
+    "intro": "A morph chart was used to systematically compare design alternatives for each functional attribute of the transfer bench. Each row represents a design parameter; each column represents an alternative implementation approach.",
+    "note": "Edit the rows array below to reflect your actual morph chart data. Add or remove alternatives as needed.",
+    "headers": ["Parameter", "Option A", "Option B", "Option C", "Selected"],
+    "rows": [
+      {
+        "parameter": "Lateral Movement Mechanism",
+        "options": ["Rail & Carriage", "Folding Arm", "Pivot Hinge"],
+        "selected": "Rail & Carriage"
+      },
+      {
+        "parameter": "Longitudinal Movement Mechanism",
+        "options": ["Sliding Track", "Telescoping Arm", "Fixed Zones"],
+        "selected": "Sliding Track"
+      },
+      {
+        "parameter": "Elevation Mechanism",
+        "options": ["Scissor Lift", "Linear Actuator", "Four-Bar Linkage"],
+        "selected": "Four-Bar Linkage"
+      },
+      {
+        "parameter": "Rotation Mechanism",
+        "options": ["Ball Bearing Pivot", "Roller Bearing", "Plain Bearing"],
+        "selected": "Ball Bearing Pivot"
+      },
+      {
+        "parameter": "Seat Material",
+        "options": ["ABS Plastic", "Aluminium", "HDPE"],
+        "selected": "HDPE"
+      },
+      {
+        "parameter": "Frame Material",
+        "options": ["Aluminium Alloy", "Stainless Steel", "PVC"],
+        "selected": "Aluminium Alloy"
+      },
+      {
+        "parameter": "Height Adjustment Control",
+        "options": ["Lever Lock", "Pin Lock", "Ratchet"],
+        "selected": "Lever Lock"
+      },
+      {
+        "parameter": "Rotation Stop Method",
+        "options": ["Physical Stop Pin", "Friction Lock", "Locking Collar"],
+        "selected": "Physical Stop Pin"
+      }
+    ]
+  },
+  "comparison_matrix": {
+    "section_label": "Existing Product Analysis",
+    "heading": "How Does Movara Compare to What Exists?",
+    "intro": "An existing product comparison matrix was developed to evaluate commercially available transfer benches against the Movara design across key functional criteria. Products were scored on a 1–5 scale.",
+    "note": "Edit the products array and criteria to match your actual comparison. Scores are out of 5.",
+    "criteria": [
+      "Lateral Transfer",
+      "Longitudinal Movement",
+      "Seat Elevation",
+      "Rotation",
+      "Wet Environment Safety",
+      "Ease of Setup",
+      "Cost Accessibility",
+      "Ergonomic Score"
+    ],
+    "products": [
+      {
+        "name": "Movara (This Project)",
+        "highlight": true,
+        "scores": [5, 5, 5, 5, 4, 3, 3, 5]
+      },
+      {
+        "name": "Drive Medical Tub Transfer Bench",
+        "highlight": false,
+        "scores": [3, 1, 1, 1, 4, 5, 5, 3]
+      },
+      {
+        "name": "Medline Heavy-Duty Bench",
+        "highlight": false,
+        "scores": [3, 1, 2, 1, 4, 4, 4, 3]
+      },
+      {
+        "name": "Carex Sliding Transfer Bench",
+        "highlight": false,
+        "scores": [4, 1, 1, 1, 4, 4, 4, 3]
+      },
+      {
+        "name": "Add Product Name",
+        "highlight": false,
+        "scores": [0, 0, 0, 0, 0, 0, 0, 0]
+      }
+    ]
+  },
+  "decision_rationale": {
+    "section_label": "Design Decisions",
+    "heading": "Key Engineering Decisions & Their Rationale",
+    "decisions": [
+      {
+        "title": "Why a Rail-and-Carriage for Lateral Movement?",
+        "body": "Replace this with your rationale. Consider: load-bearing capacity, corrosion resistance, simplicity of motion, friction characteristics in wet environments, and manufacturing feasibility. Reference your morph chart analysis."
+      },
+      {
+        "title": "Why Aluminium Alloy for the Frame?",
+        "body": "Replace this with your material decision rationale. Consider: strength-to-weight ratio, corrosion resistance without coatings, machinability, cost, and recyclability. Reference your material selection matrix from the Testing page."
+      },
+      {
+        "title": "Why a 180° Rotation Limit?",
+        "body": "Replace this with your rationale for the specific rotational limit. Consider: reach envelope required for typical bathing tasks, safety risk of unrestricted rotation, and stability of the frame at the limits of rotation."
+      },
+      {
+        "title": "Add Another Key Decision",
+        "body": "Describe another significant engineering decision you made and why. The more specific and technically grounded, the better this will read to admissions officers."
+      }
+    ]
+  }
+}
