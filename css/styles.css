@@ -94,7 +94,7 @@ p.lead { font-size: 1.15rem; color: var(--midnight-mid); font-weight: 400; }
   padding: 0 32px;
 }
 section { padding: var(--section-pad) 0; }
-section:nth-child(even) { background: var(--bg-soft); }
+section:nth-child(even):not([class]) { background: var(--bg-soft); }
 
 .two-col {
   display: grid;
