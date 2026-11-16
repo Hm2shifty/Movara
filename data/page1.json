@@ -13,8 +13,8 @@
   "stats": [
     { "value": 4, "suffix": "", "label": "Planes of Movement" },
     { "value": 180, "suffix": "°", "label": "Rotational Range" },
-    { "value": 80, "suffix": "%", "label": "of Falls Occur in the Bathroom" },
-    { "value": 1, "suffix": " in 3", "label": "Seniors Experience a Fall Annually" }
+    { "value": 68, "suffix": "%", "label": "of nonfatal bathroom injuries happen in or around the tub or shower (CDC, 2011)" },
+    { "value": 1, "suffix": " in 4", "label": "Seniors Experience a Fall Annually" }
   ],
   "problem": {
     "section_label": "The Problem",
@@ -30,7 +30,7 @@
   },
   "movements": {
     "section_label": "The Innovation",
-    "heading": "Four Planes of Movement. One Unified System.",
+    "heading": "Four Degrees of Freedom. One Unified System.",
     "intro": "The Movara transfer bench was engineered around a biomechanically informed movement model — combining four distinct planes of motion into a single, integrated assistive device.",
     "cards": [
       {
