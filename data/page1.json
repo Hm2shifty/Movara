@@ -7,26 +7,73 @@
     "eyebrow": "Senior Mobility Engineering Project",
     "headline": "Redefining Movement in the Bathtub",
     "subheadline": "An advanced transfer bench innovation engineered to restore independence, safety, and dignity to seniors navigating the most challenging ADL environment.",
-    "cta_primary": { "label": "Explore the Innovation", "href": "#innovation" },
-    "cta_secondary": { "label": "View Design Process", "href": "process.html" }
+    "cta_primary":   { "label": "Explore the Innovation", "href": "#innovation" },
+    "cta_secondary": { "label": "View Design Process",    "href": "process.html" },
+    "cad_src":  "assets/cad/overview.png",
+    "cad_alt":  "Movara — Full Assembly Isometric CAD View"
   },
   "stats": [
-    { "value": 4, "suffix": "", "label": "Planes of Movement" },
-    { "value": 180, "suffix": "°", "label": "Rotational Range" },
-    { "value": 80, "suffix": "%", "label": "of Falls Occur in the Bathroom" },
-    { "value": 1, "suffix": " in 3", "label": "Seniors Experience a Fall Annually" }
+    { "value": 4,   "suffix": "",     "label": "Planes of Movement" },
+    { "value": 180, "suffix": "°",    "label": "Rotational Range" },
+    { "value": 80,  "suffix": "%",    "label": "of Falls Occur in the Bathroom" },
+    { "value": 8,   "suffix": "",     "label": "Stakeholder Interviews Conducted" }
   ],
   "problem": {
-    "section_label": "The Problem",
-    "heading": "Why the Bathroom is the Most Dangerous Room",
-    "body": "For seniors and individuals with limited mobility, the bathtub represents one of the most physically demanding and risk-laden environments in daily life. Existing transfer bench solutions address entry and exit but neglect the full range of activities performed within the bathtub — reaching for soap, washing different areas of the body, and repositioning safely. This gap in the market creates unnecessary risk and dependence.",
-    "points": [
-      "Existing products provide only one plane of lateral movement — in and out of the tub.",
-      "Seniors must perform dangerous twisting and reaching motions with no mechanical support.",
-      "Conventional benches do not adjust seat height, forcing users into awkward eccentric loading.",
-      "No existing consumer product offers rotational capability for in-tub reach tasks.",
-      "The result: increased fall risk, reduced bathing independence, and loss of dignity."
+    "section_label": "Problem Statement",
+    "heading": "Why Existing Solutions Fall Short",
+    "body": "Bathing is one of the riskiest daily activities for older adults. Wet surfaces, tight space, and the repeated effort of lowering and raising the body make showers and tubs a high fall risk. Most shower chairs and transfer benches only give the user a fixed place to sit. They help with sitting, but not with moving: turning, reaching, shifting position, or transferring in and out. As a result, many seniors either bathe unsafely on their own, avoid bathing, or rely on a caregiver for tasks they could do themselves, which costs them privacy, dignity, and confidence. For users with very limited mobility, the equipment also makes the caregiver's job harder, since the cramped, wet space and fixed seating limit access and force awkward positions for both people. Lightweight or lower-grade materials add to the problem when users and caregivers need to trust the equipment to hold up under load and moisture."
+  },
+  "mission": {
+    "section_label": "Mission Statement",
+    "heading": "What Movara Is Built to Do",
+    "body": "Movara is a shower seating and transfer system designed to make standing up and sitting down safer, and to give users more ways to move so they can bathe independently and privately for as long as possible. For users who need more help, Movara gives a PSW or caregiver a more stable, accessible, and convenient setup. Built from stronger, higher-quality materials, Movara aims to restore dignity and confidence while keeping safety first."
+  },
+  "goals": {
+    "section_label": "Project Goals",
+    "heading": "What Movara Sets Out to Achieve",
+    "items": [
+      "Reduce fall risk during stand-to-sit and sit-to-stand in the shower.",
+      "Let more users bathe independently through added planes of movement and an elevated transfer system.",
+      "Make assisted bathing easier and safer for both the user and the caregiver.",
+      "Use durable, high-strength materials users and caregivers can trust."
     ]
+  },
+  "differentiation": {
+    "section_label": "What Makes Movara Different",
+    "heading": "How Movara Differentiates from Existing Products",
+    "body": "Movara's real differences are assisted vertical movement while seated (eccentric and concentric), travel along the tub's length, and the build strength.",
+    "mechanisms": [
+      {
+        "icon": "🔺",
+        "title": "Vertical Movement While Seated",
+        "subtitle": "Rotating Pneumatic Seat Base",
+        "description": "Unlike any existing transfer bench, Movara provides active vertical assistance while the user is seated — supporting both the downward (eccentric) and upward (concentric) phases of the sit-to-stand transition through a pneumatic mechanism."
+      },
+      {
+        "icon": "⬌",
+        "title": "Travel Along the Tub's Length",
+        "subtitle": "Longitudinal Rail System",
+        "description": "A longitudinal rail system allows the seat to travel along the full length of the bathtub, enabling users to position themselves under the showerhead or over the drain — eliminating the need to reach or stretch dangerously."
+      }
+    ]
+  },
+  "adjustments": {
+    "section_label": "Design Refinements",
+    "heading": "Key Adjustments to the Innovation",
+    "items": [
+      {
+        "component": "Base — Locking System",
+        "description": "The rail lock is now default-locked. A spring-loaded pin seated in detents along the rail holds the frame in position at all times. The user releases it by squeezing a hand lever, and it re-locks the moment they let go. This directly addresses the scenario — raised in interviews — where a seated user inadvertently releases the frame, mirroring the concern about wheelchairs moving when brakes are forgotten. The same default-lock logic was applied to the height adjustment mechanism: non-negotiable for safe operation."
+      }
+    ]
+  },
+  "project_video": {
+    "section_label": "Project Overview",
+    "heading": "About This Project",
+    "description": "A short introduction to the Movara innovation — what it is, what problem it solves, and how it works.",
+    "youtube_embed_id": "",
+    "video_local_src": "assets/videos/project-overview.mp4",
+    "placeholder_label": "Drop project overview video here (45–60 seconds) or paste YouTube embed ID into page1.json → project_video.youtube_embed_id"
   },
   "movements": {
     "section_label": "The Innovation",
@@ -57,15 +104,46 @@
   },
   "cad_gallery": {
     "section_label": "CAD Design",
-    "heading": "Precision-Engineered in SOLIDWORKS",
-    "body": "Every component of the Movara transfer bench was modelled using SOLIDWORKS, with iterative design revisions driven by physical testing outcomes, ergonomic analysis, and professional feedback.",
-    "images": [
-      { "src": "assets/cad/overview.png",    "caption": "Full Assembly — Isometric View",    "placeholder": "Drop CAD render: Full Assembly" },
-      { "src": "assets/cad/lateral.png",     "caption": "Lateral Slide Mechanism",           "placeholder": "Drop CAD render: Lateral Mechanism" },
-      { "src": "assets/cad/rotation.png",    "caption": "Rotation Joint Detail",             "placeholder": "Drop CAD render: Rotation Joint" },
-      { "src": "assets/cad/elevation.png",   "caption": "Elevation Linkage System",          "placeholder": "Drop CAD render: Elevation System" },
-      { "src": "assets/cad/seat.png",        "caption": "Seat Surface & Frame Interface",    "placeholder": "Drop CAD render: Seat Surface" },
-      { "src": "assets/cad/exploded.png",    "caption": "Exploded View — All Components",    "placeholder": "Drop CAD render: Exploded View" }
+    "heading": "Precision-Engineered in Autodesk Fusion",
+    "body": "Every component of the Movara transfer bench was modelled in Autodesk Fusion, with iterative design revisions driven by physical testing outcomes, ergonomic analysis, and professional feedback. For the two animation clips, view them as looping silent clips to best appreciate the mechanism motion.",
+    "items": [
+      { "src": "assets/cad/overview.png",    "caption": "Full Assembly: Isometric View",           "placeholder": "Drop CAD render: Full Assembly",          "is_video": false },
+      { "src": "assets/cad/lateral.mp4",     "caption": "Lateral Slide Mechanism",                 "placeholder": "Drop animation: Lateral Slide (loop)",    "is_video": true  },
+      { "src": "assets/cad/rotation.png",    "caption": "Rotation Joint Detail",                   "placeholder": "Drop CAD render: Rotation Joint",         "is_video": false },
+      { "src": "assets/cad/elevation.mp4",   "caption": "Elevation Assist: Air Spring + Damper",   "placeholder": "Drop animation: Elevation Assist (loop)", "is_video": true  },
+      { "src": "assets/cad/rail.png",        "caption": "Longitudinal Rail System",                "placeholder": "Drop CAD render: Rail System",            "is_video": false },
+      { "src": "assets/cad/exploded.png",    "caption": "Exploded View: All Components",           "placeholder": "Drop CAD render: Exploded View",          "is_video": false }
+    ]
+  },
+  "testimonies": {
+    "section_label": "Interviewee Testimonies",
+    "heading": "What Experts Said About Movara",
+    "intro": "Upon reviewing the final Movara concept, the professionals consulted throughout the project shared their perspectives on the design and its potential.",
+    "quotes": [
+      {
+        "quote": "Add the testimony quote from this interviewee here.",
+        "name": "Interviewee Name",
+        "role": "Mechanical Engineer",
+        "organization": "Organization Name"
+      },
+      {
+        "quote": "Add the testimony quote from this interviewee here.",
+        "name": "Interviewee Name",
+        "role": "Registered Physiotherapist",
+        "organization": "Clinic / Hospital Name"
+      },
+      {
+        "quote": "Add the testimony quote from this interviewee here.",
+        "name": "Interviewee Name",
+        "role": "Occupational Therapist",
+        "organization": "Organization Name"
+      },
+      {
+        "quote": "Add the testimony quote from this interviewee here.",
+        "name": "Interviewee Name",
+        "role": "Role / Title",
+        "organization": "Organization Name"
+      }
     ]
   },
   "why_it_matters": {

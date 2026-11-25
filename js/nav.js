@@ -70,8 +70,8 @@ function buildFooter() {
         </nav>
       </div>
       <div class="footer-bottom">
-        <span>Developed as an engineering portfolio for university admissions.</span>
-        <span>Movara &copy; 2024</span>
+        <span>A Senior Mobility Engineering Project by Neel Iyengar</span>
+        <span>Movara &copy; 2026</span>
       </div>
     </div>
   `;

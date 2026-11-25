@@ -7,38 +7,91 @@
   <meta name="description" content="Requirements identification, solution generation, morph charts, and existing product comparison for the Movara transfer bench." />
   <link rel="stylesheet" href="css/styles.css" />
   <style>
+    /* ── Product Comparison Table ─────────────────────── */
+    .prod-comp-wrap {
+      overflow-x: auto;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-sm);
+    }
+    .prod-comp-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    .prod-comp-table thead th {
+      padding: 14px 18px; font-weight: 600; font-family: var(--font-sans);
+      text-align: left; white-space: nowrap;
+    }
+    .prod-comp-table thead th:first-child {
+      background: var(--midnight-deep); color: #fff; width: 160px;
+    }
+    .prod-comp-table thead th.col-standard { background: #3a3f70; color: rgba(255,255,255,0.9); }
+    .prod-comp-table thead th.col-swivel   { background: #3a3f70; color: rgba(255,255,255,0.9); }
+    .prod-comp-table thead th.col-powered  { background: #3a3f70; color: rgba(255,255,255,0.9); }
+    .prod-comp-table thead th.col-movara   {
+      background: var(--midnight); color: #fff;
+      border-left: 3px solid rgba(255,255,255,0.3);
+    }
+    .prod-comp-table tbody tr { border-bottom: 1px solid var(--border-soft); transition: background 0.15s; }
+    .prod-comp-table tbody tr:last-child { border-bottom: none; }
+    .prod-comp-table tbody tr:hover { background: var(--bg-soft); }
+    .prod-comp-table tbody td {
+      padding: 13px 18px; color: var(--midnight-lt); vertical-align: top; line-height: 1.5;
+    }
+    .prod-comp-table tbody td:first-child {
+      color: var(--midnight); font-weight: 600;
+      background: var(--bg-soft); white-space: nowrap;
+    }
+    .prod-comp-table tbody td.td-movara {
+      background: rgba(25,25,112,0.04);
+      color: var(--midnight-mid); font-weight: 500;
+      border-left: 3px solid var(--border);
+    }
+    .cad-tag {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--muted);
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 3px; padding: 1px 5px; margin-left: 4px;
+      vertical-align: middle; white-space: nowrap;
+    }
+    .comp-footnote {
+      margin-top: 20px; padding: 20px 24px;
+      background: var(--bg-soft); border-radius: var(--radius-md);
+      border-left: 3px solid var(--border);
+    }
+    .comp-footnote p { font-size: 0.85rem; margin-bottom: 8px; }
+    .comp-footnote p:last-child { margin-bottom: 0; }
+    .comp-sources { font-size: 0.78rem; color: var(--muted); margin-top: 10px; }
+    .support-quote-block {
+      margin-top: 20px; padding: 20px 24px;
+      background: var(--white); border: 1px solid var(--border-soft);
+      border-left: 4px solid var(--midnight); border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+    .support-quote-block p { font-style: italic; color: var(--midnight-mid); font-size: 0.95rem; margin: 0 0 8px; }
+    .support-quote-block cite { font-size: 0.8rem; color: var(--muted); font-style: normal; }
+
+    /* ── Requirements ─────────────────────────────────── */
     .req-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; }
     .req-card {
-      background: var(--white);
-      border: 1px solid var(--border-soft);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      box-shadow: var(--shadow-sm);
+      background: var(--white); border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm);
     }
     .req-card-header {
       display: flex; gap: 14px; align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--border-soft);
+      margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border-soft);
     }
     .req-card-icon { font-size: 1.5rem; }
     .req-card h4 { margin: 0; }
 
+    /* ── Morph Chart ──────────────────────────────────── */
     .morph-selected {
-      background: rgba(25,25,112,0.08);
-      color: var(--midnight);
-      font-weight: 700;
-      border-radius: 4px;
-      padding: 2px 8px;
+      background: rgba(25,25,112,0.08); color: var(--midnight);
+      font-weight: 700; border-radius: 4px; padding: 2px 8px;
     }
     .morph-alt { color: var(--muted-lt); }
 
+    /* ── Comparison Matrix (scored) ───────────────────── */
     .comparison-score {
       display: inline-flex; align-items: center; justify-content: center;
-      width: 32px; height: 32px;
-      border-radius: 50%;
-      font-weight: 700;
-      font-size: 0.85rem;
+      width: 32px; height: 32px; border-radius: 50%;
+      font-weight: 700; font-size: 0.85rem;
     }
     .score-5 { background:#e8f8ef; color:#1a7340; }
     .score-4 { background:#eef5ff; color:#1a4a7a; }
@@ -46,10 +99,10 @@
     .score-2 { background:#fff8e8; color:#8a6000; }
     .score-1 { background:#fde8e8; color:#a01010; }
     .score-0 { background:#f0f0f0; color:#aaa; }
-
     .product-row-highlight td { background: rgba(25,25,112,0.04); font-weight: 500; }
     .product-row-highlight td:first-child { color: var(--midnight-deep); font-weight: 700; }
 
+    /* ── Decisions ────────────────────────────────────── */
     .decisions-list { display: flex; flex-direction: column; gap: 20px; }
 
     @media (max-width: 768px) {
@@ -69,8 +122,48 @@
     </div>
   </header>
 
-  <!-- REQUIREMENTS -->
-  <section id="requirements">
+  <!-- ═══════════════════════════════════════════════════
+       PRODUCT COMPARISON — before requirements
+       ═══════════════════════════════════════════════════ -->
+  <section id="product-comparison">
+    <div class="container">
+      <div class="section-header" data-reveal style="margin-bottom:40px;">
+        <span class="section-label" id="pc-label"></span>
+        <h2 id="pc-heading"></h2>
+        <div class="divider"></div>
+      </div>
+
+      <!-- Review date + summary -->
+      <div data-reveal style="margin-bottom:28px;">
+        <p id="pc-review-note" style="font-size:0.85rem;color:var(--muted);margin-bottom:8px;"></p>
+        <p id="pc-summary" style="font-size:0.95rem;color:var(--midnight-mid);font-style:italic;"></p>
+      </div>
+
+      <!-- The comparison table -->
+      <div class="prod-comp-wrap" data-reveal>
+        <table class="prod-comp-table" id="pc-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th class="col-standard">Standard Transfer Bench</th>
+              <th class="col-swivel">Swivel-Slide Bench</th>
+              <th class="col-powered">Powered Bath Lift</th>
+              <th class="col-movara">Movara</th>
+            </tr>
+          </thead>
+          <tbody id="pc-tbody"></tbody>
+        </table>
+      </div>
+
+      <!-- Footnote + sources + quote -->
+      <div data-reveal id="pc-footer"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       REQUIREMENTS
+       ═══════════════════════════════════════════════════ -->
+  <section id="requirements" style="background:var(--bg-soft);">
     <div class="container">
       <div class="section-header" data-reveal>
         <span class="section-label" id="req-label"></span>
@@ -82,8 +175,10 @@
     </div>
   </section>
 
-  <!-- IDEATION -->
-  <section id="ideation" style="background:var(--bg-soft);">
+  <!-- ═══════════════════════════════════════════════════
+       IDEATION (text only — no image)
+       ═══════════════════════════════════════════════════ -->
+  <section id="ideation">
     <div class="container">
       <div class="two-col" style="align-items:start; gap:72px;">
         <div data-reveal>
@@ -92,18 +187,27 @@
           <div class="divider left" style="margin-bottom:24px;"></div>
           <p id="idea-body"></p>
         </div>
-        <div data-reveal data-reveal-delay="2" id="idea-image-wrap">
-          <div class="img-placeholder" style="height:340px; border-radius:var(--radius-md);">
-            <span class="ph-icon">✏️</span>
-            <span>Loading ideation image…</span>
+        <!-- Right column: intentionally left clean — no image placeholder -->
+        <div data-reveal data-reveal-delay="2">
+          <div class="card" style="padding:36px;">
+            <h4 style="margin-bottom:16px;">Ideation Approach</h4>
+            <ul class="feature-list">
+              <li>Reviewed 10+ existing transfer bench products for functional gaps</li>
+              <li>Sketched initial concepts spanning 4 movement planes</li>
+              <li>Applied biomechanical principles to constrain geometry</li>
+              <li>Iterated concepts through morph chart evaluation</li>
+              <li>Refined with feedback from professional interviews</li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MORPH CHART -->
-  <section id="morph-chart">
+  <!-- ═══════════════════════════════════════════════════
+       MORPH CHART
+       ═══════════════════════════════════════════════════ -->
+  <section id="morph-chart" style="background:var(--bg-soft);">
     <div class="container">
       <div class="section-header" data-reveal>
         <span class="section-label" id="morph-label"></span>
@@ -121,8 +225,10 @@
     </div>
   </section>
 
-  <!-- COMPARISON MATRIX -->
-  <section id="comparison" style="background:var(--bg-soft);">
+  <!-- ═══════════════════════════════════════════════════
+       SCORED FEATURE MATRIX
+       ═══════════════════════════════════════════════════ -->
+  <section id="comparison">
     <div class="container">
       <div class="section-header" data-reveal>
         <span class="section-label" id="comp-label"></span>
@@ -140,8 +246,10 @@
     </div>
   </section>
 
-  <!-- DESIGN DECISIONS -->
-  <section id="decisions">
+  <!-- ═══════════════════════════════════════════════════
+       DESIGN DECISIONS
+       ═══════════════════════════════════════════════════ -->
+  <section id="decisions" style="background:var(--bg-soft);">
     <div class="container">
       <div class="section-header" data-reveal>
         <span class="section-label" id="dec-label">Design Decisions</span>
@@ -169,17 +277,50 @@
       return 'score-0';
     }
 
+    /* Mark "(CAD)" and "(planned)" tags small */
+    function tagCAD(text) {
+      return text
+        .replace(/\(CAD\)/g, '<span class="cad-tag">CAD</span>')
+        .replace(/\(planned\)/g, '<span class="cad-tag">planned</span>');
+    }
+
     fetch('data/page3.json')
       .then(r => r.json())
       .then(d => {
         document.title = d.meta.title;
 
-        // Banner
+        /* Banner */
         document.getElementById('banner-label').textContent   = d.banner.section_label;
         document.getElementById('banner-heading').textContent = d.banner.heading;
         document.getElementById('banner-lead').textContent    = d.banner.lead;
 
-        // Requirements
+        /* ── Product Comparison Table ── */
+        const pc = d.product_comparison;
+        document.getElementById('pc-label').textContent      = pc.section_label;
+        document.getElementById('pc-heading').textContent    = pc.heading;
+        document.getElementById('pc-review-note').textContent = pc.review_note;
+        document.getElementById('pc-summary').textContent    = pc.summary;
+
+        document.getElementById('pc-tbody').innerHTML = pc.rows.map(row => `
+          <tr>
+            <td>${row.feature}</td>
+            <td>${row.standard}</td>
+            <td>${row.swivel}</td>
+            <td>${row.powered}</td>
+            <td class="td-movara">${tagCAD(row.movara)}</td>
+          </tr>`).join('');
+
+        document.getElementById('pc-footer').innerHTML = `
+          <div class="comp-footnote">
+            <p>${pc.footnote}</p>
+            <p class="comp-sources">${pc.sources}</p>
+          </div>
+          <div class="support-quote-block" style="margin-top:16px;">
+            <p>"${pc.support_quote.text}"</p>
+            <cite>— ${pc.support_quote.attribution}</cite>
+          </div>`;
+
+        /* ── Requirements ── */
         document.getElementById('req-label').textContent   = d.requirements.section_label;
         document.getElementById('req-heading').textContent = d.requirements.heading;
         document.getElementById('req-intro').textContent   = d.requirements.intro;
@@ -192,25 +333,14 @@
             <ul class="feature-list">
               ${cat.items.map(item => `<li>${item}</li>`).join('')}
             </ul>
-          </div>
-        `).join('');
+          </div>`).join('');
 
-        // Ideation
+        /* ── Ideation ── */
         document.getElementById('idea-label').textContent   = d.ideation.section_label;
         document.getElementById('idea-heading').textContent = d.ideation.heading;
         document.getElementById('idea-body').textContent    = d.ideation.body;
-        const ideaWrap = document.getElementById('idea-image-wrap');
-        ideaWrap.innerHTML = `
-          <div class="img-placeholder" style="height:340px; border-radius:var(--radius-md);" id="idea-ph">
-            <span class="ph-icon">✏️</span>
-            <span>${d.ideation.image.placeholder}</span>
-            <span style="font-size:0.72rem;opacity:0.6;">assets/diagrams/ folder</span>
-          </div>`;
-        const ideaImg = new Image();
-        ideaImg.onload = () => { ideaWrap.innerHTML = `<img src="${d.ideation.image.src}" alt="${d.ideation.image.caption}" style="width:100%;border-radius:var(--radius-md);margin-bottom:10px;" /><p style="font-size:0.8rem;color:var(--muted);text-align:center;">${d.ideation.image.caption}</p>`; };
-        ideaImg.src = d.ideation.image.src;
 
-        // Morph Chart
+        /* ── Morph Chart ── */
         document.getElementById('morph-label').textContent   = d.morph_chart.section_label;
         document.getElementById('morph-heading').textContent = d.morph_chart.heading;
         document.getElementById('morph-intro').textContent   = d.morph_chart.intro;
@@ -222,30 +352,26 @@
             ${row.options.map(opt => `<td class="${opt === row.selected ? '' : 'morph-alt'}">${opt === row.selected ? `<span class="morph-selected">${opt}</span>` : opt}</td>`).join('')}
             ${row.options.length < 3 ? '<td></td>'.repeat(3 - row.options.length) : ''}
             <td><span class="morph-selected">${row.selected}</span></td>
-          </tr>
-        `).join('');
+          </tr>`).join('');
 
-        // Comparison Matrix
+        /* ── Scored Comparison Matrix ── */
         document.getElementById('comp-label').textContent   = d.comparison_matrix.section_label;
         document.getElementById('comp-heading').textContent = d.comparison_matrix.heading;
         document.getElementById('comp-intro').textContent   = d.comparison_matrix.intro;
         document.getElementById('comp-note').textContent    = d.comparison_matrix.note;
-
-        const compHead = document.getElementById('comp-thead');
-        compHead.innerHTML = `<th>Product</th>` + d.comparison_matrix.criteria.map(c => `<th>${c}</th>`).join('') + `<th>Avg</th>`;
-
+        document.getElementById('comp-thead').innerHTML =
+          `<th>Product</th>` + d.comparison_matrix.criteria.map(c => `<th>${c}</th>`).join('') + `<th>Avg</th>`;
         document.getElementById('comp-tbody').innerHTML = d.comparison_matrix.products.map(prod => {
           const nonZero = prod.scores.filter(s => s > 0);
-          const avg = nonZero.length ? (nonZero.reduce((a, b) => a + b, 0) / nonZero.length).toFixed(1) : '—';
-          return `
-            <tr class="${prod.highlight ? 'product-row-highlight' : ''}">
-              <td>${prod.highlight ? '★ ' : ''}${prod.name}</td>
-              ${prod.scores.map(s => `<td><span class="comparison-score ${scoreClass(s)}">${s || '—'}</span></td>`).join('')}
-              <td><strong>${avg}</strong></td>
-            </tr>`;
+          const avg = nonZero.length ? (nonZero.reduce((a,b)=>a+b,0)/nonZero.length).toFixed(1) : '—';
+          return `<tr class="${prod.highlight ? 'product-row-highlight' : ''}">
+            <td>${prod.highlight ? '★ ' : ''}${prod.name}</td>
+            ${prod.scores.map(s => `<td><span class="comparison-score ${scoreClass(s)}">${s||'—'}</span></td>`).join('')}
+            <td><strong>${avg}</strong></td>
+          </tr>`;
         }).join('');
 
-        // Decisions
+        /* ── Design Decisions ── */
         document.getElementById('dec-heading').textContent = d.decision_rationale.heading;
         document.getElementById('decisions-list').innerHTML = d.decision_rationale.decisions.map(dec => `
           <div class="accordion-item" data-reveal>
@@ -253,11 +379,8 @@
               <h4>${dec.title}</h4>
               <span class="accordion-arrow">▾</span>
             </div>
-            <div class="accordion-body">
-              <p style="padding-top:4px;">${dec.body}</p>
-            </div>
-          </div>
-        `).join('');
+            <div class="accordion-body"><p style="padding-top:4px;">${dec.body}</p></div>
+          </div>`).join('');
 
         initReveal();
         initAccordions();

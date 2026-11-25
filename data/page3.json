@@ -8,6 +8,77 @@
     "heading": "From Requirements to Concept",
     "lead": "The behind-the-scenes analytical work that defined what the Movara transfer bench needed to be — and ruled out what it should not be."
   },
+  "product_comparison": {
+    "section_label": "Existing Product Review",
+    "heading": "How Movara Compares to Existing Products",
+    "review_note": "Reviewed November 2026 from manufacturer and retailer listings.",
+    "summary": "Among the products I reviewed, none combined rotation, sliding transfer, and travel along the tub with passive assistance for sitting and standing.",
+    "columns": ["Feature", "Standard Transfer Bench", "Swivel-Slide Bench", "Powered Bath Lift", "Movara"],
+    "rows": [
+      {
+        "feature": "Lateral transfer",
+        "standard": "User slides across a fixed seat",
+        "swivel":   "Seat slides across (Journey's \"Gentle Slide\", Eagle \"swivels and slides\")",
+        "powered":  "Varies by model; the Aquatec's seat lays flat at the tub top for lateral transfers",
+        "movara":   "Seat slides across the frame"
+      },
+      {
+        "feature": "Seat rotation",
+        "standard": "None",
+        "swivel":   "360° swivel, locks in four positions",
+        "powered":  "Not built in; swivel transfer aid sold separately",
+        "movara":   "360° mechanism, 180° usable"
+      },
+      {
+        "feature": "Seat height",
+        "standard": "Manual leg adjustment, set before sitting",
+        "swivel":   "Manual leg adjustment, 16 to 23 in on the Maddak",
+        "powered":  "Motorized: lowers to 2.3 in and raises to 18.8 in on the Bellavita",
+        "movara":   "Manual legs set the base height; air spring and damper move the seat while seated"
+      },
+      {
+        "feature": "Control of descent",
+        "standard": "None; user controls their own",
+        "swivel":   "None",
+        "powered":  "Motor controls it; user is passive",
+        "movara":   "Passive spring and damper; user stays involved"
+      },
+      {
+        "feature": "Travel along the tub",
+        "standard": "None in models reviewed",
+        "swivel":   "None in models reviewed",
+        "powered":  "None in models reviewed",
+        "movara":   "Rails along the tub length"
+      },
+      {
+        "feature": "Power",
+        "standard": "None",
+        "swivel":   "None",
+        "powered":  "Battery",
+        "movara":   "None (passive)"
+      },
+      {
+        "feature": "Attachment",
+        "standard": "Legs on the floor, spans the rim",
+        "swivel":   "Legs on the floor, spans the rim",
+        "powered":  "Suction cups; \"smooth surfaces only, and not textured surfaces\"",
+        "movara":   "Non-slip feet and adjustable brace"
+      },
+      {
+        "feature": "Capacity / price",
+        "standard": "300–400 lb (up to 500 lb heavy-duty); about $52 to $104",
+        "swivel":   "300 lb at $299.95; 350 lb at $225",
+        "powered":  "300 lb; about $436 to $688",
+        "movara":   "Target ≥ 300 lb (proposed); concept only"
+      }
+    ],
+    "footnote": "Powered lifts move the user automatically. Movara's passive spring and damper keep the user involved in the movement, which my interviews showed users want. It also needs no battery near water.",
+    "sources": "Sources: Journey SoftSecure, Eagle Health 77762, Maddak bench, Bellavita lift, Power lift comparison, Aquatec lift, Standard bench prices (Walmart)",
+    "support_quote": {
+      "text": "The biggest concern would be the surface of the tub itself.",
+      "attribution": "Ken Anstruther"
+    }
+  },
   "requirements": {
     "section_label": "Project Requirements",
     "heading": "What Does the Ideal Solution Need to Do?",
@@ -61,12 +132,7 @@
   "ideation": {
     "section_label": "Solution Generation",
     "heading": "How Multiple Concepts Were Explored",
-    "body": "Replace this text with a description of your ideation process. How did you generate your design concepts? Did you use brainstorming sessions, sketching, or reference to existing engineering solutions? Describe the range of approaches you considered before narrowing down.",
-    "image": {
-      "src": "assets/diagrams/ideation.jpg",
-      "caption": "Ideation sketches and early concept drawings",
-      "placeholder": "Drop image: ideation sketches / concept drawings"
-    }
+    "body": "Replace this text with a description of your ideation process. How did you generate your design concepts? Did you use brainstorming sessions, sketching, or reference to existing engineering solutions? Describe the range of approaches you considered before narrowing down."
   },
   "morph_chart": {
     "section_label": "Morph Chart",
@@ -75,89 +141,31 @@
     "note": "Edit the rows array below to reflect your actual morph chart data. Add or remove alternatives as needed.",
     "headers": ["Parameter", "Option A", "Option B", "Option C", "Selected"],
     "rows": [
-      {
-        "parameter": "Lateral Movement Mechanism",
-        "options": ["Rail & Carriage", "Folding Arm", "Pivot Hinge"],
-        "selected": "Rail & Carriage"
-      },
-      {
-        "parameter": "Longitudinal Movement Mechanism",
-        "options": ["Sliding Track", "Telescoping Arm", "Fixed Zones"],
-        "selected": "Sliding Track"
-      },
-      {
-        "parameter": "Elevation Mechanism",
-        "options": ["Scissor Lift", "Linear Actuator", "Four-Bar Linkage"],
-        "selected": "Four-Bar Linkage"
-      },
-      {
-        "parameter": "Rotation Mechanism",
-        "options": ["Ball Bearing Pivot", "Roller Bearing", "Plain Bearing"],
-        "selected": "Ball Bearing Pivot"
-      },
-      {
-        "parameter": "Seat Material",
-        "options": ["ABS Plastic", "Aluminium", "HDPE"],
-        "selected": "HDPE"
-      },
-      {
-        "parameter": "Frame Material",
-        "options": ["Aluminium Alloy", "Stainless Steel", "PVC"],
-        "selected": "Aluminium Alloy"
-      },
-      {
-        "parameter": "Height Adjustment Control",
-        "options": ["Lever Lock", "Pin Lock", "Ratchet"],
-        "selected": "Lever Lock"
-      },
-      {
-        "parameter": "Rotation Stop Method",
-        "options": ["Physical Stop Pin", "Friction Lock", "Locking Collar"],
-        "selected": "Physical Stop Pin"
-      }
+      { "parameter": "Lateral Movement Mechanism",   "options": ["Rail & Carriage", "Folding Arm", "Pivot Hinge"],            "selected": "Rail & Carriage" },
+      { "parameter": "Longitudinal Movement Mechanism","options": ["Sliding Track", "Telescoping Arm", "Fixed Zones"],         "selected": "Sliding Track" },
+      { "parameter": "Elevation Mechanism",           "options": ["Scissor Lift", "Linear Actuator", "Four-Bar Linkage"],     "selected": "Four-Bar Linkage" },
+      { "parameter": "Rotation Mechanism",            "options": ["Ball Bearing Pivot", "Roller Bearing", "Plain Bearing"],   "selected": "Ball Bearing Pivot" },
+      { "parameter": "Seat Material",                 "options": ["ABS Plastic", "Aluminium", "HDPE"],                       "selected": "HDPE" },
+      { "parameter": "Frame Material",                "options": ["Aluminium Alloy", "Stainless Steel", "PVC"],              "selected": "Aluminium Alloy" },
+      { "parameter": "Height Adjustment Control",     "options": ["Lever Lock", "Pin Lock", "Ratchet"],                      "selected": "Lever Lock" },
+      { "parameter": "Rotation Stop Method",          "options": ["Physical Stop Pin", "Friction Lock", "Locking Collar"],   "selected": "Physical Stop Pin" }
     ]
   },
   "comparison_matrix": {
-    "section_label": "Existing Product Analysis",
-    "heading": "How Does Movara Compare to What Exists?",
+    "section_label": "Scored Feature Matrix",
+    "heading": "Feature Scores Across Existing Products",
     "intro": "An existing product comparison matrix was developed to evaluate commercially available transfer benches against the Movara design across key functional criteria. Products were scored on a 1–5 scale.",
     "note": "Edit the products array and criteria to match your actual comparison. Scores are out of 5.",
     "criteria": [
-      "Lateral Transfer",
-      "Longitudinal Movement",
-      "Seat Elevation",
-      "Rotation",
-      "Wet Environment Safety",
-      "Ease of Setup",
-      "Cost Accessibility",
-      "Ergonomic Score"
+      "Lateral Transfer", "Longitudinal Movement", "Seat Elevation", "Rotation",
+      "Wet Environment Safety", "Ease of Setup", "Cost Accessibility", "Ergonomic Score"
     ],
     "products": [
-      {
-        "name": "Movara (This Project)",
-        "highlight": true,
-        "scores": [5, 5, 5, 5, 4, 3, 3, 5]
-      },
-      {
-        "name": "Drive Medical Tub Transfer Bench",
-        "highlight": false,
-        "scores": [3, 1, 1, 1, 4, 5, 5, 3]
-      },
-      {
-        "name": "Medline Heavy-Duty Bench",
-        "highlight": false,
-        "scores": [3, 1, 2, 1, 4, 4, 4, 3]
-      },
-      {
-        "name": "Carex Sliding Transfer Bench",
-        "highlight": false,
-        "scores": [4, 1, 1, 1, 4, 4, 4, 3]
-      },
-      {
-        "name": "Add Product Name",
-        "highlight": false,
-        "scores": [0, 0, 0, 0, 0, 0, 0, 0]
-      }
+      { "name": "Movara (This Project)",               "highlight": true,  "scores": [5, 5, 5, 5, 4, 3, 3, 5] },
+      { "name": "Drive Medical Tub Transfer Bench",    "highlight": false, "scores": [3, 1, 1, 1, 4, 5, 5, 3] },
+      { "name": "Medline Heavy-Duty Bench",            "highlight": false, "scores": [3, 1, 2, 1, 4, 4, 4, 3] },
+      { "name": "Carex Sliding Transfer Bench",        "highlight": false, "scores": [4, 1, 1, 1, 4, 4, 4, 3] },
+      { "name": "Add Product Name",                    "highlight": false, "scores": [0, 0, 0, 0, 0, 0, 0, 0] }
     ]
   },
   "decision_rationale": {
@@ -166,11 +174,11 @@
     "decisions": [
       {
         "title": "Why a Rail-and-Carriage for Lateral Movement?",
-        "body": "Replace this with your rationale. Consider: load-bearing capacity, corrosion resistance, simplicity of motion, friction characteristics in wet environments, and manufacturing feasibility. Reference your morph chart analysis."
+        "body": "Replace this with your rationale. Consider: load-bearing capacity, corrosion resistance, simplicity of motion, friction characteristics in wet environments, and manufacturing feasibility."
       },
       {
         "title": "Why Aluminium Alloy for the Frame?",
-        "body": "Replace this with your material decision rationale. Consider: strength-to-weight ratio, corrosion resistance without coatings, machinability, cost, and recyclability. Reference your material selection matrix from the Testing page."
+        "body": "Replace this with your material decision rationale. Consider: strength-to-weight ratio, corrosion resistance without coatings, machinability, cost, and recyclability."
       },
       {
         "title": "Why a 180° Rotation Limit?",

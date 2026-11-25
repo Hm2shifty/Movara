@@ -4,81 +4,93 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Introduction — Movara Portfolio</title>
-  <meta name="description" content="How the problem was identified, why the project was pursued, and professional interviews with engineers and physiotherapists." />
+  <meta name="description" content="How the problem was identified, why the project was pursued, and professional interviews with engineers, physiotherapists, and other stakeholders." />
   <link rel="stylesheet" href="css/styles.css" />
   <style>
+    /* ── Motivation Video ─────────────────────────────── */
+    .video-container {
+      position: relative; border-radius: var(--radius-lg);
+      overflow: hidden; background: var(--bg-card);
+    }
+    .video-container video { width: 100%; display: block; border-radius: var(--radius-lg); }
+    .video-container iframe { width: 100%; aspect-ratio: 16/9; display: block; border: none; border-radius: var(--radius-lg); }
+    .video-placeholder {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 14px; padding: 60px 32px;
+      color: var(--muted); text-align: center;
+      border: 2px dashed var(--border); border-radius: var(--radius-lg);
+    }
+    .video-placeholder .ph-icon { font-size: 3rem; opacity: 0.4; }
+
+    /* ── Pillars ──────────────────────────────────────── */
     .pillars-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 40px; }
     .pillar-card {
-      background: var(--white);
-      border: 1px solid var(--border-soft);
-      border-radius: var(--radius-md);
-      padding: 28px;
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
+      background: var(--white); border: 1px solid var(--border-soft);
+      border-radius: var(--radius-md); padding: 28px;
+      display: flex; gap: 20px; align-items: flex-start;
       transition: box-shadow 0.3s, transform 0.3s;
     }
     .pillar-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
     .pillar-icon { font-size: 1.8rem; flex-shrink: 0; margin-top: 2px; }
     .pillar-card h4 { margin-bottom: 8px; }
 
+    /* ── Interview Cards ──────────────────────────────── */
     .interview-card {
-      background: var(--white);
-      border: 1px solid var(--border-soft);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
+      background: var(--white); border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm);
     }
     .interview-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-      padding: 28px 32px;
-      border-bottom: 1px solid var(--border-soft);
+      display: flex; align-items: flex-start; gap: 20px;
+      padding: 28px 32px; border-bottom: 1px solid var(--border-soft);
       background: var(--bg-soft);
     }
     .interview-avatar {
-      width: 56px; height: 56px;
-      border-radius: 50%;
-      background: var(--bg-card);
-      border: 2px solid var(--border);
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--bg-card); border: 2px solid var(--border);
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem;
-      flex-shrink: 0;
+      font-size: 1.4rem; flex-shrink: 0;
     }
     .interview-meta h4 { margin-bottom: 4px; }
     .interview-org { font-size: 0.8rem; color: var(--muted); }
+
+    /* Preview quote — NO decorative quotation mark */
     .interview-preview-quote {
       padding: 24px 32px;
-      font-style: italic;
-      color: var(--midnight-mid);
-      font-size: 1.0rem;
+      font-style: italic; color: var(--midnight-mid); font-size: 0.98rem;
       border-bottom: 1px solid var(--border-soft);
-      position: relative;
     }
-    .interview-preview-quote::before {
-      content: '\201C';
-      font-family: var(--font-serif);
-      font-size: 3rem;
-      color: var(--border);
-      position: absolute;
-      top: 8px; left: 24px;
-      line-height: 1;
+    .interview-preview-quote p { margin: 0; }
+
+    .interview-themes {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      padding: 20px 32px; border-bottom: 1px solid var(--border-soft);
     }
-    .interview-preview-quote p { padding-left: 24px; margin-top: 12px; }
-    .interview-themes { display: flex; gap: 8px; flex-wrap: wrap; padding: 20px 32px; border-bottom: 1px solid var(--border-soft); }
     .interview-accordion-toggle {
       width: 100%; background: none; border: none; cursor: pointer;
-      padding: 16px 32px;
-      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 32px; display: flex; justify-content: space-between; align-items: center;
       font-family: var(--font-sans); font-size: 0.875rem; font-weight: 600;
       color: var(--midnight); transition: background 0.2s;
     }
     .interview-accordion-toggle:hover { background: var(--bg-soft); }
-    .interview-full-body { display: none; padding: 0 32px 28px; }
+    .interview-full-body { display: none; padding: 0 32px 32px; }
     .interview-full-body.open { display: block; }
-    .toggle-arrow { transition: transform 0.3s; }
+    .toggle-arrow { transition: transform 0.3s; font-size: 0.8rem; }
     .open-arrow { transform: rotate(180deg); }
+
+    /* YouTube embed responsive container inside card */
+    .yt-embed-wrap {
+      margin-top: 24px; border-radius: var(--radius-md); overflow: hidden;
+    }
+    .yt-embed-wrap iframe {
+      width: 100%; aspect-ratio: 16/9; display: block; border: none;
+    }
+    .yt-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 12px; font-size: 0.85rem; font-weight: 600;
+      color: var(--midnight); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .yt-link:hover { color: var(--midnight-mid); }
 
     @media (max-width: 768px) {
       .pillars-grid { grid-template-columns: 1fr; }
@@ -97,18 +109,50 @@
     </div>
   </header>
 
-  <!-- ORIGIN STORY -->
+  <!-- MOTIVATION VIDEO + ORIGIN TEXT -->
   <section id="origin">
     <div class="container">
-      <div class="two-col" style="align-items:start; gap:72px;">
-        <div data-reveal>
-          <span class="section-label" id="origin-label"></span>
-          <h2 id="origin-heading"></h2>
-          <div class="divider left" style="margin-bottom:28px;"></div>
-          <div id="origin-paragraphs"></div>
-        </div>
-        <div data-reveal data-reveal-delay="2">
-          <div id="origin-image-wrap"></div>
+      <div class="section-header" data-reveal style="margin-bottom:48px;">
+        <span class="section-label" id="origin-label"></span>
+        <h2 id="origin-heading"></h2>
+        <div class="divider"></div>
+      </div>
+
+      <!-- Full-width horizontal video -->
+      <div data-reveal style="margin-bottom:56px;">
+        <div class="video-container" id="motivation-video-container"></div>
+      </div>
+
+      <!-- Narrative paragraphs below video -->
+      <div class="two-col" style="gap:60px;" data-reveal>
+        <div id="origin-paragraphs"></div>
+        <!-- Sticky project info card -->
+        <div>
+          <div class="card" style="position:sticky;top:calc(var(--nav-h)+32px);padding:36px;">
+            <h4 style="margin-bottom:20px;">About This Project</h4>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+              <div style="display:flex;gap:12px;align-items:flex-start;">
+                <span style="font-size:1.1rem;margin-top:2px;">📋</span>
+                <div><strong style="font-size:0.85rem;color:var(--midnight);">Description</strong><br>
+                  <span id="about-desc" style="font-size:0.82rem;color:var(--muted);"></span></div>
+              </div>
+              <div style="display:flex;gap:12px;align-items:flex-start;">
+                <span style="font-size:1.1rem;margin-top:2px;">📅</span>
+                <div><strong style="font-size:0.85rem;color:var(--midnight);">Duration</strong><br>
+                  <span id="about-dur" style="font-size:0.82rem;color:var(--muted);"></span></div>
+              </div>
+              <div style="display:flex;gap:12px;align-items:flex-start;">
+                <span style="font-size:1.1rem;margin-top:2px;">⚙</span>
+                <div><strong style="font-size:0.85rem;color:var(--midnight);">Tools Used</strong><br>
+                  <span id="about-tools" style="font-size:0.82rem;color:var(--muted);"></span></div>
+              </div>
+              <div style="display:flex;gap:12px;align-items:flex-start;">
+                <span style="font-size:1.1rem;margin-top:2px;">👥</span>
+                <div><strong style="font-size:0.85rem;color:var(--midnight);">Interviews</strong><br>
+                  <span id="about-int" style="font-size:0.82rem;color:var(--muted);"></span></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -137,25 +181,8 @@
           <div class="divider left" style="margin-bottom:40px;"></div>
           <div class="timeline" id="timeline-items"></div>
         </div>
-        <div data-reveal data-reveal-delay="2">
-          <div class="card" style="position:sticky; top:calc(var(--nav-h) + 32px); padding:40px;">
-            <h4 style="margin-bottom:8px;">About This Project</h4>
-            <p style="margin-bottom:24px;">A senior's mobility engineering investigation exploring the intersection of mechanical design and assistive healthcare technology.</p>
-            <div style="display:flex; gap:16px; flex-direction:column;">
-              <div style="display:flex; gap:12px; align-items:center;">
-                <span style="font-size:1.1rem;">📅</span>
-                <div><strong style="font-size:0.85rem; color:var(--midnight);">Duration</strong><br><span style="font-size:0.8rem; color:var(--muted);">~7 months (ongoing)</span></div>
-              </div>
-              <div style="display:flex; gap:12px; align-items:center;">
-                <span style="font-size:1.1rem;">⚙</span>
-                <div><strong style="font-size:0.85rem; color:var(--midnight);">Tools Used</strong><br><span style="font-size:0.8rem; color:var(--muted);">SOLIDWORKS, FMEA, FBD analysis</span></div>
-              </div>
-              <div style="display:flex; gap:12px; align-items:center;">
-                <span style="font-size:1.1rem;">👥</span>
-                <div><strong style="font-size:0.85rem; color:var(--midnight);">Interviews</strong><br><span style="font-size:0.8rem; color:var(--muted);">3 professional domain experts</span></div>
-              </div>
-            </div>
-          </div>
+        <div data-reveal data-reveal-delay="2" style="display:flex;flex-direction:column;gap:20px;">
+          <!-- intentionally left as supplementary space — the sticky project card is in origin now -->
         </div>
       </div>
     </div>
@@ -170,7 +197,7 @@
         <div class="divider"></div>
         <p id="int-intro"></p>
       </div>
-      <div id="interviews-list" style="display:flex; flex-direction:column; gap:32px;"></div>
+      <div id="interviews-list" style="display:flex; flex-direction:column; gap:28px;"></div>
     </div>
   </section>
 
@@ -182,99 +209,28 @@
     buildNav('introduction.html');
     buildFooter();
 
-    function checkImgExists(src, el) {
-      const img = new Image();
-      img.onload  = () => { el.innerHTML = `<img src="${src}" alt="" style="width:100%;border-radius:var(--radius-md);" />`; };
-      img.onerror = () => {};
-      img.src = src;
+    function renderMotivationVideo(containerEl, src, ytId, placeholder) {
+      if (ytId) {
+        containerEl.innerHTML = `
+          <iframe src="https://www.youtube.com/embed/${ytId}?rel=0&modestbranding=1"
+            title="Motivation Video" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>`;
+      } else {
+        const vid = document.createElement('video');
+        vid.src = src; vid.controls = true; vid.playsInline = true;
+        vid.style.cssText = 'width:100%;border-radius:var(--radius-lg);display:block;';
+        vid.onerror = () => {
+          containerEl.innerHTML = `
+            <div class="video-placeholder">
+              <span class="ph-icon">🎬</span>
+              <strong style="font-size:0.9rem;color:var(--midnight);">Motivation Video</strong>
+              <span style="font-size:0.85rem;">${placeholder}</span>
+            </div>`;
+        };
+        containerEl.appendChild(vid);
+      }
     }
-
-    fetch('data/page2.json')
-      .then(r => r.json())
-      .then(d => {
-        document.title = d.meta.title;
-
-        // Banner
-        document.getElementById('banner-label').textContent   = d.banner.section_label;
-        document.getElementById('banner-heading').textContent = d.banner.heading;
-        document.getElementById('banner-lead').textContent    = d.banner.lead;
-
-        // Origin
-        document.getElementById('origin-label').textContent   = d.origin.section_label;
-        document.getElementById('origin-heading').textContent = d.origin.heading;
-        document.getElementById('origin-paragraphs').innerHTML = d.origin.paragraphs.map(p => `<p style="margin-bottom:16px;">${p}</p>`).join('');
-
-        const imgWrap = document.getElementById('origin-image-wrap');
-        imgWrap.innerHTML = `
-          <div class="img-placeholder" style="height:320px; border-radius:var(--radius-md);" id="origin-img-ph">
-            <span class="ph-icon">📷</span>
-            <span>${d.origin.image.placeholder}</span>
-            <span style="font-size:0.72rem;opacity:0.6;">assets/photos/ folder</span>
-          </div>`;
-        const img = new Image();
-        img.onload = () => { imgWrap.innerHTML = `<img src="${d.origin.image.src}" alt="${d.origin.image.caption}" style="width:100%;border-radius:var(--radius-md);margin-bottom:10px;" /><p style="font-size:0.8rem;color:var(--muted);text-align:center;">${d.origin.image.caption}</p>`; };
-        img.src = d.origin.image.src;
-
-        // Why This Project
-        document.getElementById('why-label').textContent   = d.why_this_project.section_label;
-        document.getElementById('why-heading').textContent = d.why_this_project.heading;
-        document.getElementById('why-body').textContent    = d.why_this_project.body;
-        document.getElementById('pillars-grid').innerHTML  = d.why_this_project.pillars.map((p, i) => `
-          <div class="pillar-card" data-reveal data-reveal-delay="${i + 1}">
-            <span class="pillar-icon">${p.icon}</span>
-            <div>
-              <h4>${p.title}</h4>
-              <p>${p.body}</p>
-            </div>
-          </div>
-        `).join('');
-
-        // Timeline
-        document.getElementById('timeline-label').textContent   = d.timeline.section_label;
-        document.getElementById('timeline-heading').textContent = d.timeline.heading;
-        document.getElementById('timeline-items').innerHTML     = d.timeline.items.map(item => `
-          <div class="timeline-item" data-reveal>
-            <div class="timeline-date">${item.date}</div>
-            <h4>${item.title}</h4>
-            <p>${item.body}</p>
-          </div>
-        `).join('');
-
-        // Interviews
-        document.getElementById('int-label').textContent   = d.interviews.section_label;
-        document.getElementById('int-heading').textContent = d.interviews.heading;
-        document.getElementById('int-intro').textContent   = d.interviews.intro;
-
-        document.getElementById('interviews-list').innerHTML = d.interviews.professionals.map((prof, i) => `
-          <div class="interview-card" data-reveal>
-            <div class="interview-header">
-              <div class="interview-avatar">👤</div>
-              <div class="interview-meta">
-                <h4>${prof.name}</h4>
-                <div class="tag">${prof.role}</div>
-                <div class="interview-org" style="margin-top:6px;">${prof.organization}</div>
-              </div>
-            </div>
-            <div class="interview-preview-quote">
-              <p>"${prof.preview_quote}"</p>
-            </div>
-            <div class="interview-themes">
-              ${prof.key_themes.map(t => `<span class="tag">${t}</span>`).join('')}
-            </div>
-            <button class="interview-accordion-toggle" onclick="toggleInterview(this)" aria-expanded="false">
-              Read Full Interview Summary
-              <span class="toggle-arrow">▾</span>
-            </button>
-            <div class="interview-full-body">
-              <p style="padding-top:12px;">${prof.full_summary}</p>
-            </div>
-          </div>
-        `).join('');
-
-        initReveal();
-        initCounters();
-      })
-      .catch(err => console.error('Failed to load page2.json:', err));
 
     function toggleInterview(btn) {
       const body  = btn.nextElementSibling;
@@ -284,6 +240,115 @@
       arrow.classList.toggle('open-arrow');
       btn.setAttribute('aria-expanded', !isOpen);
     }
+
+    fetch('data/page2.json')
+      .then(r => r.json())
+      .then(d => {
+        document.title = d.meta.title;
+
+        /* Banner */
+        document.getElementById('banner-label').textContent   = d.banner.section_label;
+        document.getElementById('banner-heading').textContent = d.banner.heading;
+        document.getElementById('banner-lead').textContent    = d.banner.lead;
+
+        /* Origin */
+        document.getElementById('origin-label').textContent   = d.origin.section_label;
+        document.getElementById('origin-heading').textContent = d.origin.heading;
+        document.getElementById('origin-paragraphs').innerHTML =
+          d.origin.paragraphs.map(p => `<p style="margin-bottom:16px;">${p}</p>`).join('');
+
+        /* Motivation Video */
+        const mv = d.origin.motivation_video;
+        renderMotivationVideo(
+          document.getElementById('motivation-video-container'),
+          mv.video_local_src, mv.youtube_embed_id, mv.placeholder_label
+        );
+
+        /* About Project */
+        document.getElementById('about-desc').textContent  = d.about_project.description;
+        document.getElementById('about-dur').textContent   = d.about_project.duration;
+        document.getElementById('about-tools').textContent = d.about_project.tools;
+        document.getElementById('about-int').textContent   = d.about_project.interviews;
+
+        /* Why This Project */
+        document.getElementById('why-label').textContent   = d.why_this_project.section_label;
+        document.getElementById('why-heading').textContent = d.why_this_project.heading;
+        document.getElementById('why-body').textContent    = d.why_this_project.body;
+        document.getElementById('pillars-grid').innerHTML  = d.why_this_project.pillars.map((p, i) => `
+          <div class="pillar-card" data-reveal data-reveal-delay="${i + 1}">
+            <span class="pillar-icon">${p.icon}</span>
+            <div><h4>${p.title}</h4><p>${p.body}</p></div>
+          </div>`).join('');
+
+        /* Timeline */
+        document.getElementById('timeline-label').textContent   = d.timeline.section_label;
+        document.getElementById('timeline-heading').textContent = d.timeline.heading;
+        document.getElementById('timeline-items').innerHTML = d.timeline.items.map(item => `
+          <div class="timeline-item" data-reveal>
+            <div class="timeline-date">${item.date}</div>
+            <h4>${item.title}</h4>
+            <p>${item.body}</p>
+          </div>`).join('');
+
+        /* Interviews — 8 cards, no decorative quote mark, YouTube support */
+        document.getElementById('int-label').textContent   = d.interviews.section_label;
+        document.getElementById('int-heading').textContent = d.interviews.heading;
+        document.getElementById('int-intro').textContent   = d.interviews.intro;
+
+        document.getElementById('interviews-list').innerHTML = d.interviews.professionals.map((prof, i) => {
+          /* YouTube embed section */
+          let ytSection = '';
+          if (prof.highlight_clip_id) {
+            ytSection += `
+              <div class="yt-embed-wrap" style="margin-top:20px;">
+                <iframe src="https://www.youtube.com/embed/${prof.highlight_clip_id}?rel=0&modestbranding=1"
+                  title="${prof.name} — Highlight Clip" loading="lazy" allowfullscreen></iframe>
+              </div>`;
+          }
+          if (prof.youtube_embed_id) {
+            ytSection += `
+              <a class="yt-link" href="https://youtu.be/${prof.youtube_embed_id}" target="_blank" rel="noopener">
+                ▶ Watch full interview${prof.interview_duration ? ' (' + prof.interview_duration + ')' : ''} →
+              </a>`;
+          } else {
+            ytSection += `
+              <p style="font-size:0.8rem;color:var(--muted);margin-top:16px;font-style:italic;">
+                📌 To embed this interview: upload to YouTube as Unlisted and paste the video ID into
+                <code>data/page2.json → interviews.professionals[${i}].youtube_embed_id</code>
+              </p>`;
+          }
+
+          return `
+            <div class="interview-card" data-reveal>
+              <div class="interview-header">
+                <div class="interview-avatar">👤</div>
+                <div class="interview-meta">
+                  <h4>${prof.name}</h4>
+                  <div class="tag">${prof.role}</div>
+                  <div class="interview-org" style="margin-top:6px;">${prof.organization}</div>
+                </div>
+              </div>
+              <div class="interview-preview-quote">
+                <p>"${prof.preview_quote}"</p>
+              </div>
+              <div class="interview-themes">
+                ${prof.key_themes.map(t => `<span class="tag">${t}</span>`).join('')}
+              </div>
+              <button class="interview-accordion-toggle" onclick="toggleInterview(this)" aria-expanded="false">
+                Read Full Interview Summary
+                <span class="toggle-arrow">▾</span>
+              </button>
+              <div class="interview-full-body">
+                <p style="padding-top:12px;">${prof.full_summary}</p>
+                ${ytSection}
+              </div>
+            </div>`;
+        }).join('');
+
+        initReveal();
+        initCounters();
+      })
+      .catch(err => console.error('Failed to load page2.json:', err));
   </script>
 </body>
 </html>

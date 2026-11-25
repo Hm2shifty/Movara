@@ -7,201 +7,233 @@
   <meta name="description" content="An advanced bathtub transfer bench providing lateral, longitudinal, elevation, and rotational movement to support senior mobility and independence." />
   <link rel="stylesheet" href="css/styles.css" />
   <style>
-    /* ── Page 1 Specific Styles ── */
-
     /* ── Scroll-Zoom Hero ──────────────────────────────── */
-    .hero-scroll-wrapper {
-      position: relative;
-      height: 220vh;          /* tall scroll track */
-    }
+    .hero-scroll-wrapper { position: relative; height: 220vh; }
     .hero {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      min-height: unset;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      overflow: hidden;
-      padding-top: var(--nav-h);
+      position: sticky; top: 0; height: 100vh; min-height: unset;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; overflow: hidden; padding-top: var(--nav-h);
     }
-    .hero-left {
-      position: relative;
-      z-index: 2;
-      padding: 60px 0 60px 0;
-    }
-    /* Right panel: the zoom stage */
+    .hero-left { position: relative; z-index: 2; padding: 60px 0 60px 0; }
     .hero-right {
-      position: absolute;
-      right: 0; top: 0; bottom: 0;
-      width: 50%;
-      overflow: hidden;
-      pointer-events: none;
+      position: absolute; right: 0; top: 0; bottom: 0; width: 50%;
+      overflow: hidden; pointer-events: none;
     }
     .hero-photo-inner {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      will-change: transform;
-      transition: transform 0.05s linear;
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      will-change: transform; transition: transform 0.05s linear;
     }
     .hero-photo {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-      border-radius: 0 0 0 48px;
-      transform-origin: center center;
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: center top; display: block;
+      border-radius: 0 0 0 48px; transform-origin: center center;
       transition: border-radius 0.4s ease;
     }
-    /* Overlay gradient on the left edge of the photo so it blends */
     .hero-right::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      left: 0;
-      width: 180px;
+      content: ''; position: absolute; inset: 0; left: 0; width: 180px;
       background: linear-gradient(to right, var(--bg) 0%, transparent 100%);
-      z-index: 2;
-      pointer-events: none;
+      z-index: 2; pointer-events: none;
     }
-    /* Placeholder shown when no photo available */
     .hero-photo-placeholder {
-      width: 100%; height: 100%;
-      background: var(--bg-card);
-      border: 2px dashed var(--border);
-      border-radius: 0 0 0 48px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      color: var(--muted);
-      font-size: 0.85rem;
-      text-align: center;
-      padding: 32px;
+      width: 100%; height: 100%; background: var(--bg-card);
+      border: 2px dashed var(--border); border-radius: 0 0 0 48px;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 12px; color: var(--muted);
+      font-size: 0.85rem; text-align: center; padding: 32px;
     }
     .hero-photo-placeholder .ph-icon { font-size: 2.5rem; opacity: 0.4; }
-    /* Zoom label badge */
     .zoom-badge {
-      position: absolute;
-      bottom: 32px;
-      right: 32px;
-      background: rgba(255,255,255,0.9);
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--border-soft);
-      border-radius: 50px;
-      padding: 8px 18px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--midnight);
-      letter-spacing: 0.06em;
-      z-index: 4;
-      pointer-events: none;
-      opacity: 0;
-      transform: translateY(8px);
+      position: absolute; bottom: 32px; right: 32px;
+      background: rgba(255,255,255,0.9); backdrop-filter: blur(8px);
+      border: 1px solid var(--border-soft); border-radius: 50px;
+      padding: 8px 18px; font-size: 0.75rem; font-weight: 600;
+      color: var(--midnight); letter-spacing: 0.06em; z-index: 4;
+      pointer-events: none; opacity: 0; transform: translateY(8px);
       transition: opacity 0.4s, transform 0.4s;
     }
     .zoom-badge.visible { opacity: 1; transform: none; }
-    /* Scroll-cue arrow */
     .scroll-cue {
-      position: absolute;
-      bottom: 36px;
-      left: 50%;
+      position: absolute; bottom: 36px; left: 50%;
       transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      color: var(--muted);
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      animation: cue-bounce 2s ease-in-out infinite;
-      z-index: 5;
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      color: var(--muted); font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      animation: cue-bounce 2s ease-in-out infinite; z-index: 5;
     }
     .scroll-cue::after {
-      content: '';
-      display: block;
-      width: 1px;
-      height: 48px;
-      background: linear-gradient(var(--muted), transparent);
-      margin-top: 2px;
+      content: ''; display: block; width: 1px; height: 48px;
+      background: linear-gradient(var(--muted), transparent); margin-top: 2px;
     }
     @keyframes cue-bounce {
       0%, 100% { transform: translateX(-50%) translateY(0); }
-      50%        { transform: translateX(-50%) translateY(6px); }
+      50%       { transform: translateX(-50%) translateY(6px); }
     }
 
-    /* Stats strip below hero */
+    /* ── Stats Strip ───────────────────────────────────── */
     .hero-stats-strip {
       background: var(--white);
       border-top: 1px solid var(--border-soft);
       border-bottom: 1px solid var(--border-soft);
     }
     .hero-stats-inner {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      divide-x: 1px solid var(--border-soft);
-      padding: 36px 0;
+      display: grid; grid-template-columns: repeat(4, 1fr); padding: 36px 0;
     }
     .hero-stat-item {
-      text-align: center;
-      padding: 0 24px;
+      text-align: center; padding: 0 24px;
       border-right: 1px solid var(--border-soft);
     }
     .hero-stat-item:last-child { border-right: none; }
 
-    /* ── Movement Cards ───────────────────────────────── */
+    /* ── Movement Cards ────────────────────────────────── */
     .movement-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
     .movement-card {
-      background: var(--white);
-      border: 1px solid var(--border-soft);
-      border-radius: var(--radius-lg);
-      padding: 36px;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
+      background: var(--white); border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg); padding: 36px;
+      position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;
     }
     .movement-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--midnight);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s ease;
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: var(--midnight); transform: scaleX(0);
+      transform-origin: left; transition: transform 0.4s ease;
     }
     .movement-card:hover::before { transform: scaleX(1); }
     .movement-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
     .movement-icon { font-size: 2.2rem; margin-bottom: 20px; display: block; line-height: 1; }
     .movement-card h3 { font-size: 1.3rem; margin-bottom: 12px; }
 
-    /* ── CAD Gallery ──────────────────────────────────── */
+    /* ── Mission / Goals card-strips ──────────────────── */
+    .mission-layout {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
+    }
+    .mission-quote-block {
+      background: var(--bg-card); border-left: 4px solid var(--midnight);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+      padding: 36px 40px;
+    }
+    .mission-quote-block p {
+      font-size: 1.08rem; color: var(--midnight-mid);
+      font-style: italic; line-height: 1.8;
+    }
+    .goals-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .goals-list li {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 16px 20px;
+      background: var(--white); border: 1px solid var(--border-soft);
+      border-radius: var(--radius-md);
+      font-size: 0.95rem; color: var(--midnight-lt);
+      transition: box-shadow 0.2s;
+    }
+    .goals-list li:hover { box-shadow: var(--shadow-sm); }
+    .goal-num {
+      font-family: var(--font-serif); font-weight: 900; font-size: 1.3rem;
+      color: var(--border); flex-shrink: 0; line-height: 1.3;
+    }
+
+    /* ── Differentiation ───────────────────────────────── */
+    .diff-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 48px; }
+    .diff-card {
+      background: var(--white); border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg); padding: 36px;
+      box-shadow: var(--shadow-sm); transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .diff-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .diff-icon { font-size: 2rem; margin-bottom: 16px; display: block; }
+    .diff-card h3 { margin-bottom: 6px; font-size: 1.2rem; }
+    .diff-subtitle {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
+    }
+
+    /* ── Adjustments ───────────────────────────────────── */
+    .adj-card {
+      background: var(--white); border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg); padding: 36px 40px;
+      display: flex; gap: 28px; align-items: flex-start;
+    }
+    .adj-icon {
+      width: 52px; height: 52px; background: var(--midnight);
+      color: white; border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; flex-shrink: 0;
+    }
+    .adj-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
+    }
+
+    /* ── Project Video ─────────────────────────────────── */
+    .video-container {
+      position: relative; border-radius: var(--radius-lg);
+      overflow: hidden; background: var(--bg-card);
+      border: 2px dashed var(--border);
+    }
+    .video-container video {
+      width: 100%; display: block; border-radius: var(--radius-lg);
+    }
+    .video-container iframe {
+      width: 100%; aspect-ratio: 16/9; display: block; border: none;
+    }
+    .video-placeholder {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 12px; padding: 60px 32px;
+      color: var(--muted); text-align: center;
+    }
+    .video-placeholder .ph-icon { font-size: 3rem; opacity: 0.4; }
+
+    /* ── CAD Gallery ───────────────────────────────────── */
     .cad-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .cad-item { position: relative; border-radius: var(--radius-md); overflow: hidden; }
-    .cad-item img { width: 100%; height: 220px; object-fit: cover; display: block; }
+    .cad-item img  { width: 100%; height: 220px; object-fit: cover; display: block; }
+    .cad-item video{ width: 100%; height: 220px; object-fit: cover; display: block; }
     .cad-item .img-placeholder { height: 220px; }
     .cad-caption {
       position: absolute; bottom: 0; left: 0; right: 0;
       background: linear-gradient(transparent, rgba(13,16,80,0.85));
-      color: rgba(255,255,255,0.9);
-      font-size: 0.8rem; font-weight: 500;
+      color: rgba(255,255,255,0.9); font-size: 0.8rem; font-weight: 500;
       padding: 20px 14px 12px;
     }
 
-    /* ── Problem section ──────────────────────────────── */
+    /* ── Testimonies ───────────────────────────────────── */
+    .testimonies-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    .testimony-card {
+      background: var(--white); border: 1px solid var(--border-soft);
+      border-left: 4px solid var(--midnight);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+      padding: 32px 36px; box-shadow: var(--shadow-sm);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .testimony-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .testimony-text {
+      font-style: italic; color: var(--midnight-mid);
+      font-size: 0.98rem; line-height: 1.75; margin-bottom: 20px;
+    }
+    .testimony-author { display: flex; align-items: center; gap: 12px; }
+    .testimony-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--bg-card); border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center; font-size: 1rem;
+    }
+    .testimony-name { font-weight: 600; font-size: 0.88rem; color: var(--midnight); }
+    .testimony-role { font-size: 0.75rem; color: var(--muted); }
+
+    /* ── Why It Matters ────────────────────────────────── */
+    .why-section {
+      background: var(--midnight-deep) !important;
+      color: rgba(255,255,255,0.85) !important; padding: var(--section-pad) 0;
+    }
+    .why-section h2         { color: #ffffff !important; }
+    .why-section p          { color: rgba(255,255,255,0.68) !important; }
+    .why-section .section-label       { color: rgba(255,255,255,0.45); }
+    .why-section .section-label::before { background: rgba(255,255,255,0.45); }
+    .why-section .btn-outline { color: #fff !important; border-color: rgba(255,255,255,0.35) !important; }
+    .why-section .btn-outline:hover   { background: rgba(255,255,255,0.12) !important; }
+
+    /* ── Problem visual ────────────────────────────────── */
     .problem-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
     .problem-visual {
-      background: var(--bg-card);
-      border: 1px solid var(--border-soft);
-      border-radius: var(--radius-lg);
-      padding: 48px 36px; text-align: center;
+      background: var(--bg-card); border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg); padding: 48px 36px; text-align: center;
     }
     .problem-visual .big-num {
       font-family: var(--font-serif); font-size: 4rem; font-weight: 900;
@@ -212,32 +244,23 @@
       margin-top: 8px; margin-bottom: 32px;
     }
 
-    /* ── Why It Matters — FORCE dark background ───────── */
-    .why-section {
-      background: var(--midnight-deep) !important;
-      color: rgba(255,255,255,0.85) !important;
-      padding: var(--section-pad) 0;
-    }
-    .why-section h2         { color: #ffffff !important; }
-    .why-section p          { color: rgba(255,255,255,0.68) !important; }
-    .why-section .section-label       { color: rgba(255,255,255,0.45); }
-    .why-section .section-label::before { background: rgba(255,255,255,0.45); }
-    .why-section .btn-outline { color: #fff !important; border-color: rgba(255,255,255,0.35) !important; }
-    .why-section .btn-outline:hover { background: rgba(255,255,255,0.12) !important; border-color: rgba(255,255,255,0.7) !important; }
-
-    /* ── Responsive ───────────────────────────────────── */
+    /* ── Responsive ────────────────────────────────────── */
     @media (max-width: 1024px) {
       .hero { grid-template-columns: 55% 45%; }
+      .diff-cards { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .hero-scroll-wrapper { height: 140vh; }
       .hero { grid-template-columns: 1fr; padding: calc(var(--nav-h) + 32px) 0 32px; height: auto; position: relative; }
       .hero-right { display: none; }
-      .movement-grid, .cad-gallery, .problem-layout { grid-template-columns: 1fr; }
+      .movement-grid, .cad-gallery, .problem-layout, .mission-layout,
+      .testimonies-grid { grid-template-columns: 1fr; }
       .cad-gallery { grid-template-columns: repeat(2, 1fr); }
       .hero-stats-inner { grid-template-columns: 1fr 1fr; }
       .hero-stat-item:nth-child(2), .hero-stat-item:nth-child(4) { border-right: none; }
-      .hero-stat-item:nth-child(1), .hero-stat-item:nth-child(2) { border-bottom: 1px solid var(--border-soft); padding-bottom: 24px; margin-bottom: 24px; }
+      .hero-stat-item:nth-child(1), .hero-stat-item:nth-child(2) {
+        border-bottom: 1px solid var(--border-soft); padding-bottom: 24px; margin-bottom: 24px;
+      }
     }
     @media (max-width: 480px) { .cad-gallery { grid-template-columns: 1fr; } }
   </style>
@@ -245,13 +268,15 @@
 <body>
   <nav id="nav" role="navigation" aria-label="Main navigation"></nav>
 
-  <!-- HERO — Scroll-Zoom Split Layout -->
+  <!-- ═══════════════════════════════════════════════════
+       HERO — Scroll-Zoom Split Layout
+       ═══════════════════════════════════════════════════ -->
   <div class="hero-scroll-wrapper" id="hero-scroll-wrapper">
     <section class="hero" id="home">
       <div class="hero-bg-pattern"></div>
       <div class="hero-grid-pattern"></div>
 
-      <!-- LEFT: Text content -->
+      <!-- LEFT -->
       <div class="hero-left container" style="padding-right:48px;">
         <div class="hero-eyebrow" id="hero-eyebrow">Senior Mobility Engineering Project</div>
         <h1 id="hero-headline">Loading…</h1>
@@ -259,39 +284,39 @@
         <div class="hero-cta" id="hero-cta"></div>
       </div>
 
-      <!-- RIGHT: Scroll-zoom photo panel -->
+      <!-- RIGHT: CAD render (scroll-zoom) -->
       <div class="hero-right" id="hero-right">
         <div class="hero-photo-inner" id="hero-photo-inner">
-          <!-- Image loads here — drop assets/photos/senior-using-device.jpg -->
           <img
             id="hero-photo-img"
-            src="assets/photos/senior-using-device.jpg"
-            alt="A senior using the Movara transfer bench"
+            src="assets/cad/overview.png"
+            alt="Movara — Full Assembly Isometric CAD View"
             class="hero-photo"
             onerror="this.style.display='none'; document.getElementById('hero-photo-ph').style.display='flex';"
           />
           <div id="hero-photo-ph" class="hero-photo-placeholder" style="display:none;">
-            <span class="ph-icon">📷</span>
-            <strong style="font-size:0.9rem;color:var(--midnight);">Senior Using Movara</strong>
-            <span>Drop <code style="font-size:0.78rem;">assets/photos/senior-using-device.jpg</code> to display your photo here</span>
+            <span class="ph-icon">📐</span>
+            <strong style="font-size:0.9rem;color:var(--midnight);">CAD Render — Full Assembly</strong>
+            <span>Drop <code style="font-size:0.78rem;">assets/cad/overview.png</code> to display the CAD render here</span>
           </div>
         </div>
         <div class="zoom-badge" id="zoom-badge">↑ Scroll to explore</div>
       </div>
 
-      <!-- Scroll cue -->
       <div class="scroll-cue" aria-hidden="true">Scroll</div>
     </section>
   </div>
 
-  <!-- STAT STRIP (outside sticky wrapper) -->
+  <!-- STAT STRIP -->
   <div class="hero-stats-strip">
     <div class="container">
       <div class="hero-stats-inner" id="hero-stats"></div>
     </div>
   </div>
 
-  <!-- THE PROBLEM -->
+  <!-- ═══════════════════════════════════════════════════
+       PROBLEM STATEMENT
+       ═══════════════════════════════════════════════════ -->
   <section id="problem">
     <div class="container">
       <div class="problem-layout">
@@ -299,8 +324,7 @@
           <span class="section-label" id="problem-label"></span>
           <h2 id="problem-heading"></h2>
           <div class="divider left" style="margin-bottom:28px"></div>
-          <p id="problem-body" class="lead" style="margin-bottom:28px;"></p>
-          <ul class="feature-list" id="problem-points"></ul>
+          <p id="problem-body" class="lead" style="margin-bottom:0;"></p>
         </div>
         <div class="problem-visual" data-reveal data-reveal-delay="2">
           <span class="big-num" data-counter="80" data-suffix="%">0%</span>
@@ -314,8 +338,90 @@
     </div>
   </section>
 
-  <!-- THE INNOVATION — 4 Movements -->
-  <section id="innovation" style="background: var(--bg-soft);">
+  <!-- ═══════════════════════════════════════════════════
+       MISSION STATEMENT
+       ═══════════════════════════════════════════════════ -->
+  <section id="mission" style="background:var(--bg-soft);">
+    <div class="container">
+      <div class="mission-layout">
+        <div data-reveal>
+          <span class="section-label" id="mission-label"></span>
+          <h2 id="mission-heading"></h2>
+          <div class="divider left" style="margin-bottom:0;"></div>
+        </div>
+        <div class="mission-quote-block" data-reveal data-reveal-delay="2">
+          <p id="mission-body"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       GOALS
+       ═══════════════════════════════════════════════════ -->
+  <section id="goals">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-label" id="goals-label"></span>
+        <h2 id="goals-heading"></h2>
+        <div class="divider"></div>
+      </div>
+      <ul class="goals-list" id="goals-list"></ul>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       DIFFERENTIATION
+       ═══════════════════════════════════════════════════ -->
+  <section id="differentiation" style="background:var(--bg-soft);">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-label" id="diff-label"></span>
+        <h2 id="diff-heading"></h2>
+        <div class="divider"></div>
+        <p id="diff-body" style="margin-top:16px;"></p>
+      </div>
+      <div class="diff-cards" id="diff-cards"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       DESIGN ADJUSTMENTS
+       ═══════════════════════════════════════════════════ -->
+  <section id="adjustments">
+    <div class="container">
+      <div class="section-header" data-reveal style="margin-bottom:40px;">
+        <span class="section-label" id="adj-label"></span>
+        <h2 id="adj-heading"></h2>
+        <div class="divider"></div>
+      </div>
+      <div id="adj-list" style="display:flex;flex-direction:column;gap:20px;"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       PROJECT OVERVIEW VIDEO
+       ═══════════════════════════════════════════════════ -->
+  <section id="project-video" style="background:var(--bg-soft);">
+    <div class="container">
+      <div class="two-col" style="gap:60px;align-items:center;">
+        <div data-reveal>
+          <span class="section-label" id="pv-label"></span>
+          <h2 id="pv-heading"></h2>
+          <div class="divider left" style="margin-bottom:20px;"></div>
+          <p id="pv-description"></p>
+        </div>
+        <div data-reveal data-reveal-delay="2">
+          <div class="video-container" id="pv-container"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       INNOVATION — 4 Movements
+       ═══════════════════════════════════════════════════ -->
+  <section id="innovation">
     <div class="container">
       <div class="section-header" data-reveal>
         <span class="section-label" id="movements-label"></span>
@@ -327,8 +433,10 @@
     </div>
   </section>
 
-  <!-- CAD Gallery -->
-  <section id="cad">
+  <!-- ═══════════════════════════════════════════════════
+       CAD GALLERY
+       ═══════════════════════════════════════════════════ -->
+  <section id="cad" style="background:var(--bg-soft);">
     <div class="container">
       <div class="section-header" data-reveal>
         <span class="section-label" id="cad-label"></span>
@@ -340,7 +448,24 @@
     </div>
   </section>
 
-  <!-- WHY IT MATTERS -->
+  <!-- ═══════════════════════════════════════════════════
+       INTERVIEWEE TESTIMONIES
+       ═══════════════════════════════════════════════════ -->
+  <section id="testimonies">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-label" id="test-label"></span>
+        <h2 id="test-heading"></h2>
+        <div class="divider"></div>
+        <p id="test-intro"></p>
+      </div>
+      <div class="testimonies-grid" id="testimonies-grid"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       WHY IT MATTERS
+       ═══════════════════════════════════════════════════ -->
   <section class="why-section" id="why">
     <div class="container">
       <div style="max-width:720px; margin:0 auto; text-align:center;" data-reveal>
@@ -360,74 +485,181 @@
     buildNav('index.html');
     buildFooter();
 
+    /* ── Helpers ──────────────────────────────────────── */
+    function renderVideo(containerEl, src, ytId, placeholder) {
+      if (ytId) {
+        containerEl.innerHTML = `
+          <iframe src="https://www.youtube.com/embed/${ytId}?rel=0&modestbranding=1"
+            title="Project Overview" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy" style="width:100%;aspect-ratio:16/9;display:block;border:none;border-radius:var(--radius-lg);"></iframe>`;
+      } else {
+        const vid = document.createElement('video');
+        vid.src = src; vid.loop = true; vid.muted = true; vid.playsInline = true;
+        vid.autoplay = true;
+        vid.style.cssText = 'width:100%;border-radius:var(--radius-lg);display:block;';
+        vid.onerror = () => {
+          containerEl.innerHTML = `<div class="video-placeholder"><span class="ph-icon">🎬</span><span style="font-size:0.85rem;">${placeholder}</span></div>`;
+        };
+        containerEl.appendChild(vid);
+      }
+    }
+
+    function tryLoadImg(src, placeholder, containerEl, h = 220) {
+      containerEl.innerHTML = `
+        <div class="img-placeholder" style="height:${h}px;">
+          <span class="ph-icon">📐</span>
+          <span style="font-size:0.82rem;">${placeholder}</span>
+          <span style="font-size:0.72rem;opacity:0.6;">assets/cad/ folder</span>
+        </div>`;
+      const img = new Image();
+      img.onload = () => {
+        containerEl.innerHTML = '';
+        img.style.cssText = `width:100%;height:${h}px;object-fit:cover;display:block;`;
+        containerEl.appendChild(img);
+      };
+      img.src = src;
+    }
+
+    /* ── Load JSON ────────────────────────────────────── */
     fetch('data/page1.json')
       .then(r => r.json())
       .then(d => {
         document.title = d.meta.title;
         document.querySelector('meta[name="description"]').content = d.meta.description;
 
-        // Hero
-        document.getElementById('hero-eyebrow').textContent = d.hero.eyebrow;
-        document.getElementById('hero-headline').innerHTML =
+        /* Hero */
+        document.getElementById('hero-eyebrow').textContent    = d.hero.eyebrow;
+        document.getElementById('hero-headline').innerHTML     =
           d.hero.headline.replace(/([A-Z][a-z]+ [A-Z][a-z]+)/, '<em>$1</em>');
         document.getElementById('hero-subheadline').textContent = d.hero.subheadline;
         document.getElementById('hero-cta').innerHTML = `
-          <a class="btn btn-primary" href="${d.hero.cta_primary.href}">${d.hero.cta_primary.label} →</a>
-          <a class="btn btn-outline" href="${d.hero.cta_secondary.href}">${d.hero.cta_secondary.label}</a>
-        `;
-        // Stats strip
+          <a class="btn btn-primary"  href="${d.hero.cta_primary.href}">${d.hero.cta_primary.label} →</a>
+          <a class="btn btn-outline"  href="${d.hero.cta_secondary.href}">${d.hero.cta_secondary.label}</a>`;
+
+        /* Stats */
         document.getElementById('hero-stats').innerHTML = d.stats.map(s => `
           <div class="hero-stat-item">
             <span class="hero-stat-num" data-counter="${s.value}" data-suffix="${s.suffix}">0</span>
             <span class="hero-stat-label">${s.label}</span>
-          </div>
-        `).join('');
+          </div>`).join('');
 
-        // Problem
-        document.getElementById('problem-label').textContent = d.problem.section_label;
+        /* Problem */
+        document.getElementById('problem-label').textContent   = d.problem.section_label;
         document.getElementById('problem-heading').textContent = d.problem.heading;
-        document.getElementById('problem-body').textContent = d.problem.body;
-        document.getElementById('problem-points').innerHTML = d.problem.points.map(p => `<li>${p}</li>`).join('');
+        document.getElementById('problem-body').textContent    = d.problem.body;
 
-        // Movements
-        document.getElementById('movements-label').textContent = d.movements.section_label;
+        /* Mission */
+        document.getElementById('mission-label').textContent   = d.mission.section_label;
+        document.getElementById('mission-heading').textContent = d.mission.heading;
+        document.getElementById('mission-body').textContent    = d.mission.body;
+
+        /* Goals */
+        document.getElementById('goals-label').textContent   = d.goals.section_label;
+        document.getElementById('goals-heading').textContent = d.goals.heading;
+        document.getElementById('goals-list').innerHTML = d.goals.items.map((item, i) => `
+          <li>
+            <span class="goal-num">0${i + 1}</span>
+            <span>${item}</span>
+          </li>`).join('');
+
+        /* Differentiation */
+        document.getElementById('diff-label').textContent   = d.differentiation.section_label;
+        document.getElementById('diff-heading').textContent = d.differentiation.heading;
+        document.getElementById('diff-body').textContent    = d.differentiation.body;
+        document.getElementById('diff-cards').innerHTML = d.differentiation.mechanisms.map((m, i) => `
+          <div class="diff-card" data-reveal data-reveal-delay="${i + 1}">
+            <span class="diff-icon">${m.icon}</span>
+            <h3>${m.title}</h3>
+            <div class="diff-subtitle">${m.subtitle}</div>
+            <p>${m.description}</p>
+          </div>`).join('');
+
+        /* Adjustments */
+        document.getElementById('adj-label').textContent   = d.adjustments.section_label;
+        document.getElementById('adj-heading').textContent = d.adjustments.heading;
+        document.getElementById('adj-list').innerHTML = d.adjustments.items.map(item => `
+          <div class="adj-card" data-reveal>
+            <div class="adj-icon">🔒</div>
+            <div>
+              <div class="adj-label">${item.component}</div>
+              <p style="margin:0;">${item.description}</p>
+            </div>
+          </div>`).join('');
+
+        /* Project Video */
+        const pv = d.project_video;
+        document.getElementById('pv-label').textContent       = pv.section_label;
+        document.getElementById('pv-heading').textContent     = pv.heading;
+        document.getElementById('pv-description').textContent = pv.description;
+        renderVideo(document.getElementById('pv-container'), pv.video_local_src, pv.youtube_embed_id, pv.placeholder_label);
+
+        /* Movements */
+        document.getElementById('movements-label').textContent   = d.movements.section_label;
         document.getElementById('movements-heading').textContent = d.movements.heading;
-        document.getElementById('movements-intro').textContent = d.movements.intro;
+        document.getElementById('movements-intro').textContent   = d.movements.intro;
         document.getElementById('movements-grid').innerHTML = d.movements.cards.map((c, i) => `
           <div class="movement-card" data-reveal data-reveal-delay="${i + 1}">
             <span class="movement-icon">${c.icon}</span>
             <h3>${c.title}</h3>
             <p>${c.description}</p>
-          </div>
-        `).join('');
+          </div>`).join('');
 
-        // CAD Gallery
-        document.getElementById('cad-label').textContent = d.cad_gallery.section_label;
+        /* CAD Gallery */
+        document.getElementById('cad-label').textContent   = d.cad_gallery.section_label;
         document.getElementById('cad-heading').textContent = d.cad_gallery.heading;
-        document.getElementById('cad-body').textContent = d.cad_gallery.body;
-        document.getElementById('cad-gallery').innerHTML = d.cad_gallery.images.map(img => {
+        document.getElementById('cad-body').textContent    = d.cad_gallery.body;
+        document.getElementById('cad-gallery').innerHTML = d.cad_gallery.items.map((item, idx) => {
+          const isVideo = item.is_video;
+          if (isVideo) {
+            return `
+              <div class="cad-item" data-reveal>
+                <video src="${item.src}" autoplay loop muted playsinline
+                  style="width:100%;height:220px;object-fit:cover;display:block;"
+                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></video>
+                <div class="img-placeholder" style="height:220px;display:none;">
+                  <span class="ph-icon">🎬</span>
+                  <span>${item.placeholder}</span>
+                </div>
+                <div class="cad-caption">${item.caption}</div>
+              </div>`;
+          }
           return `
-            <div class="cad-item" data-reveal>
-              <img src="${img.src}" alt="${img.caption}"
-                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-                   style="height:220px;object-fit:cover;width:100%;" />
+            <div class="cad-item" data-reveal id="cad-item-${idx}">
+              <img src="${item.src}" alt="${item.caption}"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+                style="height:220px;object-fit:cover;width:100%;" />
               <div class="img-placeholder" style="height:220px;display:none;">
                 <span class="ph-icon">📐</span>
-                <span>${img.placeholder}</span>
-                <span style="font-size:0.72rem;opacity:0.6;">assets/cad/ folder</span>
+                <span>${item.placeholder}</span>
               </div>
-              <div class="cad-caption">${img.caption}</div>
+              <div class="cad-caption">${item.caption}</div>
             </div>`;
         }).join('');
 
-        // Why It Matters
-        document.getElementById('why-label').textContent = d.why_it_matters.section_label;
+        /* Testimonies */
+        document.getElementById('test-label').textContent   = d.testimonies.section_label;
+        document.getElementById('test-heading').textContent = d.testimonies.heading;
+        document.getElementById('test-intro').textContent   = d.testimonies.intro;
+        document.getElementById('testimonies-grid').innerHTML = d.testimonies.quotes.map((q, i) => `
+          <div class="testimony-card" data-reveal data-reveal-delay="${i % 2 + 1}">
+            <p class="testimony-text">"${q.quote}"</p>
+            <div class="testimony-author">
+              <div class="testimony-avatar">👤</div>
+              <div>
+                <div class="testimony-name">${q.name}</div>
+                <div class="testimony-role">${q.role}${q.organization ? ' · ' + q.organization : ''}</div>
+              </div>
+            </div>
+          </div>`).join('');
+
+        /* Why It Matters */
+        document.getElementById('why-label').textContent   = d.why_it_matters.section_label;
         document.getElementById('why-heading').textContent = d.why_it_matters.heading;
-        document.getElementById('why-body').textContent = d.why_it_matters.body;
+        document.getElementById('why-body').textContent    = d.why_it_matters.body;
         document.getElementById('why-cta').innerHTML = `
           <a class="btn btn-outline" href="${d.why_it_matters.cta.href}">${d.why_it_matters.cta.label} →</a>`;
 
-        // Re-init reveal + counters after DOM population
         initReveal();
         initCounters();
       })
@@ -435,78 +667,47 @@
 
     /* ══════════════════════════════════════════════════════
        SCROLL-ZOOM EFFECT
-       ════════════════════════════════════════════════════ */
+       ══════════════════════════════════════════════════════ */
     (function initScrollZoom() {
-      const wrapper    = document.getElementById('hero-scroll-wrapper');
-      const inner      = document.getElementById('hero-photo-inner');
-      const photo      = document.getElementById('hero-photo-img');
-      const badge      = document.getElementById('zoom-badge');
-      const scrollCue  = document.querySelector('.scroll-cue');
-
+      const wrapper   = document.getElementById('hero-scroll-wrapper');
+      const inner     = document.getElementById('hero-photo-inner');
+      const photo     = document.getElementById('hero-photo-img');
+      const badge     = document.getElementById('zoom-badge');
+      const scrollCue = document.querySelector('.scroll-cue');
       if (!wrapper || !inner) return;
 
-      let rafId = null;
-      let lastScrollY = -1;
+      let rafId = null, lastScrollY = -1;
 
       function update() {
-        const scrollY      = window.scrollY;
+        const scrollY = window.scrollY;
         if (scrollY === lastScrollY) { rafId = null; return; }
         lastScrollY = scrollY;
 
-        const wrapperRect  = wrapper.getBoundingClientRect();
-        const wrapperTop   = scrollY + wrapperRect.top;   // absolute top
-        const wrapperH     = wrapper.offsetHeight;         // 220vh
-        const viewportH    = window.innerHeight;           // 100vh
+        const wrapperTop = scrollY + wrapper.getBoundingClientRect().top;
+        const wrapperH   = wrapper.offsetHeight;
+        const viewportH  = window.innerHeight;
+        const sp = Math.max(0, Math.min(1, (scrollY - wrapperTop) / (wrapperH - viewportH)));
 
-        // scrollProgress: 0 at top of wrapper, 1 at bottom
-        const scrollProgress = Math.max(0, Math.min(1,
-          (scrollY - wrapperTop) / (wrapperH - viewportH)
-        ));
-
-        // ── Scale curve ──────────────────────────────────
-        // 0→0.5 : scale 1.0 → 1.35  (grow)
-        // 0.5→1 : scale 1.35 → 1.0  (shrink back)
         let scale;
-        if (scrollProgress <= 0.5) {
-          // ease-in-out cubic growth
-          const t = scrollProgress * 2;
-          const eased = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-          scale = 1 + eased * 0.35;
+        if (sp <= 0.5) {
+          const t = sp * 2, e = t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
+          scale = 1 + e * 0.35;
         } else {
-          // ease-in-out cubic shrink
-          const t = (scrollProgress - 0.5) * 2;
-          const eased = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-          scale = 1.35 - eased * 0.35;
+          const t = (sp-0.5)*2, e = t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
+          scale = 1.35 - e * 0.35;
         }
-
-        // ── Translate: subtle vertical drift ─────────────
-        const translateY = (scrollProgress - 0.5) * -40; // ±20px
-
-        inner.style.transform = `scale(${scale.toFixed(4)}) translateY(${translateY.toFixed(1)}px)`;
-
-        // Border-radius: loses curve at peak zoom
+        const ty = (sp - 0.5) * -40;
+        inner.style.transform = `scale(${scale.toFixed(4)}) translateY(${ty.toFixed(1)}px)`;
         if (photo) {
-          const br = 48 * (1 - Math.min(scrollProgress * 2, 1) * 0.75);
+          const br = 48 * (1 - Math.min(sp * 2, 1) * 0.75);
           photo.style.borderRadius = `0 0 0 ${br.toFixed(0)}px`;
         }
-
-        // Show/hide badge when zoomed in
-        if (badge) {
-          badge.classList.toggle('visible', scrollProgress > 0.08 && scrollProgress < 0.92);
-        }
-
-        // Hide scroll cue once user starts scrolling
-        if (scrollCue && scrollY > 60) scrollCue.style.opacity = '0';
-        if (scrollCue && scrollY <= 10) scrollCue.style.opacity = '1';
-
+        if (badge) badge.classList.toggle('visible', sp > 0.08 && sp < 0.92);
+        if (scrollCue) scrollCue.style.opacity = scrollY > 60 ? '0' : '1';
         rafId = null;
       }
 
-      window.addEventListener('scroll', () => {
-        if (!rafId) rafId = requestAnimationFrame(update);
-      }, { passive: true });
-
-      // initial call
+      window.addEventListener('scroll', () => { if (!rafId) rafId = requestAnimationFrame(update); }, { passive: true });
       update();
     })();
   </script>
